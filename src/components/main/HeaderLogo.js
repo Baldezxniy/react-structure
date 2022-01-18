@@ -1,11 +1,11 @@
 import { Text, View } from "react-native"
-import { styles } from "../../../assets/main/headerStyle"
+import { stylesHeader } from "../../assets/headerStyle"
 
 
 const HeaderLogo = () => {
     return (
-        <View style={styles.header__logo}>
-            <Text style={styles.header__logo__text}>
+        <View style={stylesHeader.header__logo}>
+            <Text style={stylesHeader.header__logo__text}>
                 Telegram
             </Text>
         </View>
