@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import { Link } from "react-router-native"
-import { stylesUserItemLIst } from "../../assets/main/userList"
+import { stylesUserItemLIst } from "../../assets/main/userListStyles"
 import CheckedMessage from "./CheckedMessage"
 import LastMessage from "./LastMessage"
 import LastMessageTime from "./LastMessageTime"

@@ -1,5 +1,5 @@
 import { Text, View } from "react-native"
-import { stylesUserItemLIst } from "../../assets/main/userList"
+import { stylesUserItemLIst } from "../../assets/main/userListStyles"
 
 const UserName = () => {
     return (

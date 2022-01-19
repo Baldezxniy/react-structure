@@ -1,12 +1,12 @@
 import { Animated, FlatList, View } from "react-native"
-import { ADDITIONAL_DATA_LIST } from "../../assets/main/additionalParamsDataList"
-import { DATA_LIST } from "../../assets/main/paramsListData"
-import { stylesMainMenu } from "../../assets/mainMenu/mainMenuStyles"
-import MenuParamsItem from "./MenuItemParams"
-import MenuImg from "../../features/mainMenu/MenuImg"
-import MenuName from "../../features/mainMenu/MenuName"
-import MenuNumber from "../../features/mainMenu/MenuNumber"
-import ThemeApp from "../../features/mainMenu/Theme"
+import { ADDITIONAL_DATA_LIST } from "../assets/main/additionalParamsDataList"
+import { DATA_LIST } from "../assets/main/paramsListData"
+import { stylesMainMenu } from "../assets/mainMenu/mainMenuStyles"
+import MenuParamsItem from "../components/MenuItemParams"
+import MenuImg from "../features/mainMenu/MenuImg"
+import MenuName from "../features/mainMenu/MenuName"
+import MenuNumber from "../features/mainMenu/MenuNumber"
+import ThemeApp from "../features/mainMenu/Theme"
 
 const Menu = ({showMenuAnimated})=>{
 

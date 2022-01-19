@@ -10,24 +10,29 @@ export const stylesHeader = StyleSheet.create({
         width: '100%'
 
     },
-    header__menu: {
+    header__left__buttom: {
         justifyContent: 'center',
+        width:40
     },
 
-    header__logo: {
+    header__content: {
         justifyContent: 'center',
         flexGrow: 1
     },
-    search: {
+    header__right__buttom: {
         justifyContent: 'center',
         alignItems: 'center',
 
     },
-    header__logo__text: {
+    header__content__text: {
         color: '#fff',
         fontSize: 21,
-        paddingLeft: 20,
         fontWeight: '600'
-    }
+    },
+    header__content__input:{
+        fontSize:17,
+        maxWidth:'82%'
+    
+      },
 
 });

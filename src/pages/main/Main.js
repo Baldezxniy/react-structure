@@ -1,10 +1,10 @@
 import { View, Animated } from 'react-native'
 import { useState, useRef } from 'react'
 import Header from '../../layout/Header'
-import Footer from '../../components/main/Footer'
-import Menu from '../../components/main/Menu'
-import MenuTouchable from '../../components/main/MenuTouchable'
-import { MainBody } from '../../components/main/MainBody'
+import Footer from '../../layout/Footer'
+import Menu from '../../layout/Menu'
+import MenuTouchable from '../../components/MenuTouchable'
+import { MainBody } from '../../components/MainBody'
 
 const Main = () => {
 

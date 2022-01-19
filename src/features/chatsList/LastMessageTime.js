@@ -1,5 +1,5 @@
 import { Text } from "react-native"
-import { stylesUserItemLIst } from "../../assets/main/userList"
+import { stylesUserItemLIst } from "../../assets/main/userListStyles"
 
 const LastMessageTime = () => {
     return (

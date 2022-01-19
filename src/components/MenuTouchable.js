@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import { TouchableHighlight } from "react-native"
-import { stylesMainMenu } from "../../assets/mainMenu/mainMenuStyles"
+import { stylesMainMenu } from "../assets/mainMenu/mainMenuStyles"
 
 const MenuTouchable = ({ openMenu, showMenuAnimatedOut }) => {
     return (

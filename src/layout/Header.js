@@ -1,29 +1,37 @@
 
 import { View } from 'react-native';
 import { stylesHeader } from '../assets/headerStyle';
-import HeaderLogo from '../components/main/HeaderLogo';
-import HeadeMenuButtom from '../components/main/HeaderMenuButtom';
-import HeaderSearchButtom from '../components/main/HeaderSearchButtom';
+import HeaderLogo from '../components/HeaderLogo';
+import HeadeMenuButtom from '../components/HeaderMenuButtom';
+import HeaderSearchButtom from '../components/HeaderSearchButtom';
+import SearchHeaderBackArrow from '../components/SearchHeaderBackArrow';
+import SearchHeaderClose from '../components/SearchHeaderClose';
+import SearchInput from '../features/search/SearchInput';
 
 
 const Header = ({ showMenuAnimatedOn, headerMode }) => {
 
-
-	return (
-		<View style={stylesHeader.header}>
-			{headerMode === 'main' ?
-				<>
+	switch (headerMode) {
+		case 'main': {
+			return (
+				<View style={stylesHeader.header}>
 					<HeadeMenuButtom showMenuAnimatedOn={showMenuAnimatedOn} />
 					<HeaderLogo />
 					<HeaderSearchButtom />
-				</>
-				: null}
-			{	
-				//headerMode === 'search' ?
+				</View>
+			)
+		} case 'search': {
+			return (
+				<View style={stylesHeader.header}>
+					<SearchHeaderBackArrow />
+					<SearchInput />
+					<SearchHeaderClose />
+				</View>
+			)
+		}
+	}
 
-			}
-		</View>
-	)
+
 }
 
 export default Header

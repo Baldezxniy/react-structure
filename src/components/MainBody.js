@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { FontAwesome } from 'react-native-vector-icons'
 import { ScrollView } from 'react-native';
-import UserListItem from '../../features/chatsList/UserListItem';
+import UserListItem from '../features/chatsList/UserListItem';
+import Music from '../layout/Music';
 
 
 export const MainBody = () => {
@@ -28,28 +29,10 @@ export const MainBody = () => {
 					</View>
 				</ScrollView>
 			</View>
-			<View style={[styles.row__container, styles.music__container]}>
-				<View style={{ marginRight: 20, justifyContent: 'center' }}>
-					<FontAwesome name='pause' />
-				</View>
-				<View style={[styles.row__container, { alignItems: 'center', flexGrow: 1 }]}>
-					<Text style={{ fontWeight: 'bold' }}>
-						Telegram @relax
-					</Text>
-					<Text style={{ marginLeft: 5, marginRight: 5 }}>
-						-
-					</Text>
-					<Text style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
-						автор
-					</Text>
-				</View>
-				<View style={{ justifyContent: 'center' }}>
-					<FontAwesome name='close' style={{ fontSize: 14 }} />
-				</View>
-			</View>
+			<Music />
 			<View>
 				<UserListItem />
-				
+
 			</View>
 		</View>
 	)

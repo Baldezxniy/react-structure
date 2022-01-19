@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { Link } from "react-router-native";
-import { stylesMainMenu } from "../../assets/mainMenu/mainMenuStyles";
+import { stylesMainMenu } from "../assets/mainMenu/mainMenuStyles";
 
 const MenuParamsItem = ({ Icon, iconName, title, path }) => (
 
