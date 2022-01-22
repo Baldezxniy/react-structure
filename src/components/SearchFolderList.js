@@ -10,12 +10,17 @@ import { SearchStyles } from "../assets/search/SearchStyles"
 
 
 const RenderItem = ({ title, color, borderBottomWidth, onPress }) => (
-    <TouchableOpacity onPress={onPress} style={[SearchStyles.folders__item, { color: color, borderBottomWidth: borderBottomWidth }]}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={[SearchStyles.folders__item__text, color]}>
-                {title}
-            </Text>
-        </View>
+    <TouchableOpacity onPress={onPress} style={[SearchStyles.folders__item,]}>
+        <>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={[SearchStyles.folders__item__text, color]}>
+                    {title}
+                </Text>
+            </View>
+            <View style={[{ borderBottomWidth: borderBottomWidth }, SearchStyles.active__folders__item]}>
+
+            </View>
+        </>
     </TouchableOpacity>
 )
 const SearchFolderList = () => {
@@ -24,7 +29,7 @@ const SearchFolderList = () => {
 
     const renderItem = ({ item }) => {
         const color = item.id === active ? '#4169E1' : 'rgba(0, 0, 0, 0.5)'
-        const borderBottomWidth = item.id === active ? 3 : 0
+        const borderBottomWidth = item.id === active ? 4 : 0
 
         return (
             <RenderItem title={item.title}

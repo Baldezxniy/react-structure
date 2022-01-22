@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const stylesHeader = StyleSheet.create({
-    header: {
+    header: { 
         marginTop: 30,
         paddingLeft: 15,
         paddingRight: 15,
         flexDirection: 'row',
-        height: 45,
+        height: 50,
         width: '100%'
 
     },
@@ -16,8 +16,9 @@ export const stylesHeader = StyleSheet.create({
     },
 
     header__content: {
-        justifyContent: 'center',
-        flexGrow: 1
+        alignItems: 'center',
+        flexGrow: 1,
+        flexDirection:'row'
     },
     header__right__buttom: {
         justifyContent: 'center',

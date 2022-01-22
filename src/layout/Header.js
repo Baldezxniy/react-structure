@@ -1,6 +1,9 @@
 
 import { View } from 'react-native';
 import { stylesHeader } from '../assets/headerStyle';
+import ChatHeaderBackArrow from '../components/ChatHeaderBackArrow';
+import ChatHeaderButton from '../components/ChatHeaderButton';
+import ChatHeaderContent from '../components/ChatHeaderContent';
 import HeaderLogo from '../components/HeaderLogo';
 import HeadeMenuButtom from '../components/HeaderMenuButtom';
 import HeaderSearchButtom from '../components/HeaderSearchButtom';
@@ -26,6 +29,14 @@ const Header = ({ showMenuAnimatedOn, headerMode }) => {
 					<SearchHeaderBackArrow />
 					<SearchInput />
 					<SearchHeaderClose />
+				</View>
+			)
+		} case 'chat': {
+			return (
+				<View style={stylesHeader.header}>
+					<ChatHeaderBackArrow />
+					<ChatHeaderContent />
+					<ChatHeaderButton /> 
 				</View>
 			)
 		}

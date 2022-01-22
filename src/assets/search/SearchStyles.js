@@ -8,9 +8,13 @@ export const SearchStyles = StyleSheet.create({
 		paddingTop: 10,
 		marginLeft: 15,
 		marginRight: 15,
-		paddingBottom: 5,
-		borderColor: '#4169E1',
 		borderRadius: 5,
+	},
+	active__folders__item: {
+		borderBottomColor: '#4169E1',
+		borderTopRightRadius: 15,
+		borderTopLeftRadius: 15,
+		marginTop:3
 	},
 
 	folders__item__text: {
