@@ -1,5 +1,7 @@
-import { View, StyleSheet, Text, TextInput } from 'react-native'
+import { View, TextInput } from 'react-native'
 import { MaterialCommunityIcons, SimpleLineIcons } from 'react-native-vector-icons'
+
+import React from 'react'
 
 
 import Header from '../../layout/Header'
@@ -12,34 +14,37 @@ const image = { uri: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAk
 
 const Chat = () => {
 
+
 	return (
 		<View style={{ flex: 1 }}>
 			<Header headerMode='chat' />
 			<Music />
+			<View style={{justifySelf:'self-end'  }}>
 
-			<ChatMessageList />
-			<View style={{ height: 50, backgroundColor: 'rgba(0, 0, 0, 0.1)', width: '100%', paddingRight: 15, paddingLeft: 15, flexDirection: 'row' }}>
-				<View style={{ justifyContent: 'flex-end', paddingBottom: 12, marginRight: 15 }}>
-					<MaterialCommunityIcons name='sticker-emoji' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
-
-				</View>
-				<View style={{ justifyContent: 'flex-end', flexGrow: 1, paddingBottom: 12 }}>
-					<TextInput
-						autoFocus
-					
-						style={{ fontSize: 16 }}
-						multiline={true}
-						placeholder='Сообщение'
-
-					/>
-				</View>
-				<View style={[styles.row__container,]}>
+				<ChatMessageList />
+				<View style={{ justifySelf:'self-end', height: 45, backgroundColor: 'rgba(0, 0, 0, 0.1)', width: '100%', paddingRight: 15, paddingLeft: 15, flexDirection: 'row' }}>
 					<View style={{ justifyContent: 'flex-end', paddingBottom: 12, marginRight: 15 }}>
-						<SimpleLineIcons name='paper-clip' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
-					</View>
-					<View style={{ justifyContent: 'flex-end', paddingBottom: 12 }}>
-						<SimpleLineIcons name='microphone' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
+						<MaterialCommunityIcons name='sticker-emoji' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
 
+					</View>
+					<View style={{ justifyContent: 'center', flexGrow: 1 }}>
+						<TextInput
+							autoFocus
+							style={{ overflowY: 'overlay', height: 20, resize: 'none', fontSize: 16 }}
+							multiline={true}
+							placeholder='Сообщение'
+							contenteditable={true}
+
+						/>
+					</View>
+					<View style={{ flexDirection: 'row' }}>
+						<View style={{ justifyContent: 'flex-end', paddingBottom: 12, marginRight: 15 }}>
+							<SimpleLineIcons name='paper-clip' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
+						</View>
+						<View style={{ justifyContent: 'flex-end', paddingBottom: 12 }}>
+							<SimpleLineIcons name='microphone' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
+
+						</View>
 					</View>
 				</View>
 			</View>
@@ -51,41 +56,6 @@ const Chat = () => {
 
 
 
+export default Chat
 
 
-const styles = StyleSheet.create({
-	row__container: {
-		flexDirection: 'row'
-	},
-	header: {
-		marginTop: 30,
-		paddingLeft: 15,
-		paddingRight: 15,
-		flexDirection: 'row',
-		height: 60,
-		width: '100%',
-		borderStyle: 'solid',
-		borderBottomWidth: 1,
-		borderColor: 'rgba(0, 0, 0, 0.5)'
-	},
-	header__arrow: {
-		justifyContent: 'center',
-		marginRight: 20
-	},
-	music__container: {
-		borderTopWidth: 0.2,
-		borderBottomWidth: 0.2,
-		borderStyle: 'solid',
-		borderColor: 'rgba(0, 0, 0, 0.5)',
-		height: 35,
-		backgroundColor: 'rgba(0, 0, 0, .1)',
-		paddingLeft: 15,
-		paddingRight: 15
-	}
-})
-
-
-
-
-
-export default Chat 

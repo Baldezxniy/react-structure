@@ -9,8 +9,9 @@ import HeadeMenuButtom from '../components/HeaderMenuButtom';
 import HeaderSearchButtom from '../components/HeaderSearchButtom';
 import SearchHeaderBackArrow from '../components/SearchHeaderBackArrow';
 import SearchHeaderClose from '../components/SearchHeaderClose';
+import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../features/search/SearchInput';
-
+import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
 
 const Header = ({ showMenuAnimatedOn, headerMode }) => {
 
@@ -37,6 +38,14 @@ const Header = ({ showMenuAnimatedOn, headerMode }) => {
 					<ChatHeaderBackArrow />
 					<ChatHeaderContent />
 					<ChatHeaderButton /> 
+				</View>
+			)
+		}case 'userProfile':{
+			return (
+				<View style={stylesHeader.header}>
+					<UserProfileHeaderBackArrow />
+					<UserProfileHeaderButtom />
+					
 				</View>
 			)
 		}

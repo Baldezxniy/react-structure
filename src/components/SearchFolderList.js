@@ -5,10 +5,6 @@ import { FOLDER_LIST_DATA } from "../assets/search/folderListData"
 import { SearchStyles } from "../assets/search/SearchStyles"
 
 
-
-
-
-
 const RenderItem = ({ title, color, borderBottomWidth, onPress }) => (
     <TouchableOpacity onPress={onPress} style={[SearchStyles.folders__item,]}>
         <>

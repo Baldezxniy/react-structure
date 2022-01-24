@@ -10,21 +10,20 @@ const ChatMessageList = memo(() => {
 
         { userId: 1, text: 'хуй', changed: false, time: '10:01' },
 
+     { userId: 1, text: 'хуй', changed: false, time: '10:01' },
         { userId: 1, text: 'хуй', changed: false, time: '10:01' },
+
         { userId: 1, text: 'хуй', changed: false, time: '10:01' },
-        { userId: 1, text: 'хуй', changed: false, time: '10:01' },
-        { userId: 1, text: 'хуй', changed: false, time: '10:01' },
-        { userId: 1, text: 'хуй', changed: false, time: '10:01' },
-        { userId: 1, text: 'хуй', changed: false, time: '10:01' },
-        { userId: 1, text: 'хуй', changed: false, time: '10:01' },
+
+     
 
         { userId: 12, text: 'пизда', changed: true, time: '10:01' }]
 
     return (
 
 
-        <View style={{ flexGrow: 1 }}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-end' }}>
+        <View style={{  }}>
+            <ScrollView contentContainerStyle={{ }}>
                 <View>
                     {
                         [...message].map((m, index) => {
