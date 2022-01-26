@@ -9,11 +9,13 @@ import HeadeMenuButtom from '../components/HeaderMenuButtom';
 import HeaderSearchButtom from '../components/HeaderSearchButtom';
 import SearchHeaderBackArrow from '../components/SearchHeaderBackArrow';
 import SearchHeaderClose from '../components/SearchHeaderClose';
+import SettingHeaderBackArrow from '../components/SettingHeaderBackArrow';
+import SettingHeaderButton from '../components/SettingHeaderButton';
 import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../features/search/SearchInput';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
 
-const Header = ({ showMenuAnimatedOn, headerMode }) => {
+const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler }) => {
 
 	switch (headerMode) {
 		case 'main': {
@@ -37,15 +39,22 @@ const Header = ({ showMenuAnimatedOn, headerMode }) => {
 				<View style={stylesHeader.header}>
 					<ChatHeaderBackArrow />
 					<ChatHeaderContent />
-					<ChatHeaderButton /> 
+					<ChatHeaderButton />
 				</View>
 			)
-		}case 'userProfile':{
+		} case 'userProfile': {
 			return (
 				<View style={stylesHeader.header}>
 					<UserProfileHeaderBackArrow />
 					<UserProfileHeaderButtom />
-					
+
+				</View>
+			)
+		} case "setting": {
+			return (
+				<View style={stylesHeader.header}>
+					<SettingHeaderBackArrow />
+					<SettingHeaderButton openMenuHeandler={openMenuHeandler}/>
 				</View>
 			)
 		}
