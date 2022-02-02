@@ -1,6 +1,6 @@
 import { Text, View } from "react-native"
-import { SearchStyles } from "../assets/search/SearchStyles"
 import SearchListClear from "../features/searchList/SearchListClear"
+import { SearchStyles } from "../styles/SearchStyles"
 
 const SearchClear = () => {
     return (

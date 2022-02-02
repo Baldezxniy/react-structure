@@ -1,5 +1,7 @@
 import { memo } from "react";
-import { userStyle } from './../../assets/userProfile/userStyles'
+import { userStyle } from "../../styles/userStyles";
+
+
 const UserProfileDiscription = memo((props) => {
     return (
         <View style={userStyle.info__item}>

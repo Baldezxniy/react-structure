@@ -1,4 +1,4 @@
-import { stylesHeader } from "../assets/headerStyle"
+import { stylesHeader } from "../styles/headerStyle"
 import {Feather} from 'react-native-vector-icons'
 import { View } from "react-native"
 import { Link } from "react-router-native"

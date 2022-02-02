@@ -1,5 +1,5 @@
 import { View } from "react-native"
-import { chatStyles } from "../../assets/chat/chatStyles"
+import { chatStyles } from "../../styles/chatStyles"
 import MessageChange from "./MessageChange"
 import MeassageText from "./MessageText"
 import MessageTime from "./MessageTime"

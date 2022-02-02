@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import {AntDesign} from 'react-native-vector-icons'
-import { stylesHeader } from "../assets/headerStyle"
+import { stylesHeader } from "../styles/headerStyle"
 
 const SearchHeaderClose = () => {
     return (

@@ -1,5 +1,5 @@
 import { Link } from "react-router-native"
-import { SearchStyles } from "../../assets/search/SearchStyles"
+import { SearchStyles } from "../../styles/SearchStyles"
 import RecentUserImg from "./RecentUserImg"
 import RecentUserName from "./RecentUserName"
 

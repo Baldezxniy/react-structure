@@ -1,7 +1,7 @@
-import {MaterialIcons,MaterialCommunityIcons} from 'react-native-vector-icons'
+import { MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons'
 import { Text, View } from "react-native"
 import { Link } from 'react-router-native'
-import { FooterStyle } from '../assets/FooterStyle'
+import { FooterStyle } from '../styles/FooterStyle'
 
 const Footer = () => {
     return (

@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native"
-import { userStyle } from "../../assets/userProfile/userStyles"
+import { userStyle } from "../../styles/userStyles"
 
 const RenderItem = ({ title, color, borderBottomWidth, onPress, content }) => {
     return (

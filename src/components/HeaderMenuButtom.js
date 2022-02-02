@@ -1,6 +1,6 @@
 import { TouchableHighlight, View } from "react-native"
 import {Feather} from 'react-native-vector-icons'
-import { stylesHeader } from "../assets/headerStyle"
+import { stylesHeader } from "../styles/headerStyle"
 
 const HeadeMenuButtom = ({showMenuAnimatedOn})=>{
     return (

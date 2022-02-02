@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
-import { settingStyle } from "../assets/setting/settingStyle";
-import {FontAwesome5, Ionicons} from 'react-native-vector-icons'
+import { FontAwesome5, Ionicons } from 'react-native-vector-icons'
+import { settingStyle } from "../styles/settingStyle";
 
 
 export const SettingMenu = memo(({ openMenu, closeMenuHandler, openEditNameHeandler }) => {

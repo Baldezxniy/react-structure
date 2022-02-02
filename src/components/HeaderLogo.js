@@ -1,5 +1,5 @@
 import { Text, View } from "react-native"
-import { stylesHeader } from "../assets/headerStyle"
+import { stylesHeader } from "../styles/headerStyle"
 
 
 const HeaderLogo = () => {

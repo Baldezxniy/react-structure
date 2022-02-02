@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import { Link } from "react-router-native"
 import {Ionicons} from 'react-native-vector-icons'
-import {stylesHeader} from './../assets/headerStyle'
+import { stylesHeader } from "../styles/headerStyle"
 const ChatHeaderBackArrow = () => {
     return (
         <View style={stylesHeader.header__left__buttom}>

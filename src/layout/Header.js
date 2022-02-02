@@ -1,6 +1,4 @@
-
 import { View } from 'react-native';
-import { stylesHeader } from '../assets/headerStyle';
 import ChatHeaderBackArrow from '../components/ChatHeaderBackArrow';
 import ChatHeaderButton from '../components/ChatHeaderButton';
 import ChatHeaderContent from '../components/ChatHeaderContent';
@@ -13,6 +11,7 @@ import SettingHeaderBackArrow from '../components/SettingHeaderBackArrow';
 import SettingHeaderButton from '../components/SettingHeaderButton';
 import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../features/search/SearchInput';
+import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
 
 const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler }) => {

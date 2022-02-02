@@ -1,6 +1,6 @@
 import { memo, useState } from "react"
 import { FlatList, ScrollView, Text, TouchableOpacity, View } from "react-native"
-import { userStyle } from "../../assets/userProfile/userStyles"
+import { userStyle } from "../../styles/userStyles"
 import RenderItem from "./UserProfileRenderFoldersItme"
 
 

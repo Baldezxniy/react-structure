@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import { Link } from "react-router-native"
-import { stylesHeader } from "../assets/headerStyle"
+import { stylesHeader } from "../styles/headerStyle"
 import UserImg from "../features/chatHeader/UserImg"
 import UserName from "../features/chatHeader/UserName"
 import UserOnline from "../features/chatHeader/UserOnline"

@@ -1,9 +1,9 @@
 import { View } from "react-native"
 import { Link } from "react-router-native"
-import { SearchStyles } from "../assets/search/SearchStyles"
 import SearchListImg from "../features/searchList/SearchListImg"
 import SearchListOnline from "../features/searchList/SearchListOnline"
 import SearchListUserName from "../features/searchList/SearchListUrerName"
+import { SearchStyles } from "../styles/SearchStyles"
 
 const SearchListItem = () => {
     return (

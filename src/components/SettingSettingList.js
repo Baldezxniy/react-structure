@@ -1,14 +1,14 @@
 import { memo } from "react";
-import { FlatList, Text, TouchableHighlight, View } from "react-native";
-import { SETTING_DATA } from "../assets/setting/settingDATA";
-import { settingStyle } from "../assets/setting/settingStyle";
+import { FlatList, Text, View } from "react-native";
+import { settingStyle } from "../styles/settingStyle";
+import { SETTING_DATA } from "./settingDATA";
 import SettingRenderItem from "./SettingRenderItem";
 
 
 const SettingSettingList = memo((props) => {
     const renderItem = ({ item }) => {
         return (
-            <SettingRenderItem listMode='setting' iconName={item.iconName} Icon={item.Icon} title={item.title} modal={item.modal} id={item.id} />
+            <SettingRenderItem iconName={item.iconName} Icon={item.Icon} title={item.title} modal={item.modal} id={item.id} border={item.border} />
         )
     }
 

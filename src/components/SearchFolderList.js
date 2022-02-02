@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
 import { ScrollView } from "react-native"
-import { FOLDER_LIST_DATA } from "../assets/search/folderListData"
-import { SearchStyles } from "../assets/search/SearchStyles"
+import { FOLDER_LIST_DATA } from "./folderListData"
+import { SearchStyles } from "../styles/SearchStyles"
 
 
 const RenderItem = ({ title, color, borderBottomWidth, onPress }) => (
@@ -19,6 +19,7 @@ const RenderItem = ({ title, color, borderBottomWidth, onPress }) => (
         </>
     </TouchableOpacity>
 )
+
 const SearchFolderList = () => {
 
     const [active, setActive] = useState(1)

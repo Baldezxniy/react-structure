@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Switch, Text, View } from "react-native";
-import { userStyle } from "../../assets/userProfile/userStyles";
+import { userStyle } from "../../styles/userStyles";
 
 const UserProfileNotification = memo((props) => {
     return (

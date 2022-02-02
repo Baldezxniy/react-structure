@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { View } from "react-native";
-import {Ionicons, Foundation} from 'react-native-vector-icons'
-import { stylesHeader } from "../assets/headerStyle";
+import { Ionicons, Foundation } from 'react-native-vector-icons'
+import { stylesHeader } from "../styles/headerStyle"
 const UserProfileHeaderButtom = memo((props) => {
     return (
         <View style={stylesHeader.header__button}>

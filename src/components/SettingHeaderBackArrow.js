@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { View } from "react-native";
 import { Link } from "react-router-native";
-import { stylesHeader } from "../assets/headerStyle";
+import { stylesHeader } from "../styles/headerStyle"
 import { Ionicons } from 'react-native-vector-icons'
 
 const SettingHeaderBackArrow = memo((props) => {

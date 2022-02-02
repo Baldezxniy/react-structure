@@ -5,7 +5,7 @@ import UserProfileDataName from "../features/userProfileData/USerProfileDataName
 import UserProfileDataOnline from "../features/userProfileData/UserProfileDataOnline";
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
 import { Link } from "react-router-native";
-import { userStyle } from "../assets/userProfile/userStyles";
+import { userStyle } from "../styles/userStyles";
 
 
 

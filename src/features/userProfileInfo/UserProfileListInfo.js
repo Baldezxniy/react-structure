@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Switch, Text, View } from "react-native";
+import { View } from "react-native";
 import UserProfileDiscription from "./UserProfileDiscription";
 import UserProfileNotification from "./UserProfileNotification";
 import UserProfileTelephone from "./UserProfileTelephone";
@@ -11,15 +11,15 @@ const UserProfileLIstInfo = memo((props) => {
     const userName = false
 
     return (
-        
-                <View>
-                    {telephone && <UserProfileTelephone />}
-                    {discription && <UserProfileDiscription />}
-                    {userName && <UserProfileUserName />}
-                    <UserProfileNotification />
-                </View>
 
-           
+        <View>
+            {telephone && <UserProfileTelephone />}
+            {discription && <UserProfileDiscription />}
+            {userName && <UserProfileUserName />}
+            <UserProfileNotification />
+        </View>
+
+
     )
 })
 

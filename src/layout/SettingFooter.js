@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import { settingStyle } from "../assets/setting/settingStyle";
+import { settingStyle } from "../styles/settingStyle";
 
 const SettingFooter = memo(() => {
     return (

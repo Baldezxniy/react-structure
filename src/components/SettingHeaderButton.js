@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { TouchableHighlight, View } from "react-native";
 import { Feather, Ionicons } from 'react-native-vector-icons'
-import { stylesHeader } from "../assets/headerStyle";
+import { stylesHeader } from "../styles/headerStyle"
 
 const SettingHeaderButton = memo(({ openMenuHeandler }) => {
     return (

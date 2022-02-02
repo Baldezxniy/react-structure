@@ -1,14 +1,14 @@
 import { memo } from "react";
 import { View } from "react-native";
-import { settingStyle } from "../assets/setting/settingStyle";
-import SettingImg from "../features/settingInfo/SettingImg";
-import SettingName from "../features/settingInfo/SettingName";
-import SettingOnline from "../features/settingInfo/SettingOnline";
+import SettingAvatar from "../features/profile/SettingAvatar";
+import SettingName from "../features/profile/SettingName";
+import SettingOnline from "../features/profile/SettingOnline";
+import { settingStyle } from "../styles/settingStyle";
 
 const SettingInfo = memo(() => {
     return (
         <View style={settingStyle.info__block}>
-            <SettingImg />
+            <SettingAvatar />
             <View>
                 <SettingName />
                 <SettingOnline />

@@ -1,12 +1,12 @@
 import { View } from "react-native"
 import { Link } from "react-router-native"
-import { stylesUserItemLIst } from "../../assets/main/userListStyles"
 import CheckedMessage from "./CheckedMessage"
 import LastMessage from "./LastMessage"
 import LastMessageTime from "./LastMessageTime"
 import UserImg from "./UserImg"
 import UserName from "./UserName"
 import {AntDesign} from 'react-native-vector-icons'
+import { stylesUserItemLIst } from "../../styles/userListStyles"
 
 
 const UserListItem = () => {

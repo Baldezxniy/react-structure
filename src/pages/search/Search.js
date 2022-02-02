@@ -1,11 +1,11 @@
 import { View, ScrollView} from 'react-native'
-import { SearchStyles } from '../../assets/search/SearchStyles'
 import SearchFolderList from '../../components/SearchFolderList'
 import SearchListItem from '../../components/SearchListItem'
 import RecentUserItem from '../../features/recentSearch/RecentUserItem'
 import Header from '../../layout/Header'
 import Music from '../../layout/Music'
 import SearchClear from '../../layout/SearchClear'
+import { SearchStyles } from '../../styles/SearchStyles'
 
 
 
