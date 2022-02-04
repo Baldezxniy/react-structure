@@ -1,9 +1,16 @@
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
 
-const CheckedMessage = () => {
+const CheckedMessage = ({ checked }) => {
     return (
         <>
-            <MaterialCommunityIcons name='check' style={{ fontSize: 18, justifyContent: 'center', marginRight: 5 }} />
+            {
+                checked ?
+                    <MaterialCommunityIcons name='check-all' style={{ fontSize: 18, justifyContent: 'center', marginRight: 5 }} />
+
+                    :
+                    <MaterialCommunityIcons name='check' style={{ fontSize: 18, justifyContent: 'center', marginRight: 5 }} />
+
+            }
 
         </>
 

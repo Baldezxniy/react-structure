@@ -1,4 +1,4 @@
-import { NativeRouter, Routes, Route, Redirect } from "react-router-native";
+import { NativeRouter, Routes, Route } from "react-router-native";
 
 import SettingPage from "../pages/setting/SettingPage.js";
 import AddContact from "../pages/addContact/AddContact.js";

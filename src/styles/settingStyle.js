@@ -24,6 +24,14 @@ export const settingStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    avatar__cntainer: {
+        marginRight: 20
+    },
+    avatar: {
+        width: 60,
+        height: 60,
+        borderRadius: 50
+    },
     data__container: {
         borderColor: 'rgba(0, 0, 0, 0.4)',
         borderStyle: 'solid',
@@ -37,7 +45,7 @@ export const settingStyle = StyleSheet.create({
         paddingBottom: 13,
         marginTop: 10
     },
-    
+
     setting__item: {
         paddingLeft: 20,
         flexDirection: 'row',

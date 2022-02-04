@@ -10,7 +10,19 @@ export const stylesUserItemLIst = StyleSheet.create({
         width: '100%'
     },
     item__img__container: {
-        width: 60
+        width: 60,
+        position: 'relative',
+    },
+    img__online: {
+        position: 'absolute',
+        bottom: 12,
+        right: 12,
+        width: 12,
+        height: 12,
+        backgroundColor: 'green',
+        borderRadius: 50,
+        borderColor: '#aaa5e8',
+        borderWidth: 1
     },
     item__img: {
         width: 50,
@@ -22,7 +34,7 @@ export const stylesUserItemLIst = StyleSheet.create({
         flexGrow: 1
     },
     item__name: {
-        flexDirection:'row',
+        flexDirection: 'row',
         justifyContent: 'flex-start',
         marginBottom: 5,
         color: '#fff',

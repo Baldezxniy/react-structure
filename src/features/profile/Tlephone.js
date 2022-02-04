@@ -2,7 +2,7 @@ import { Text, View } from "react-native"
 import { useSelector } from "react-redux"
 import { getTelephone } from "./profileSelector"
 
-const MenuNumber = (props) => {
+const Telephone = (props) => {
     const telephone = useSelector(getTelephone)
     return (
         <View>
@@ -13,4 +13,4 @@ const MenuNumber = (props) => {
     )
 }
 
-export default MenuNumber
+export default Telephone

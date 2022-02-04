@@ -1,14 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { FontAwesome } from 'react-native-vector-icons'
 import { ScrollView } from 'react-native';
-import UserListItem from '../features/chatsList/UserListItem';
+import ChatList from '../features/chatsList/ChatList';
 import Music from '../layout/Music';
 
 
 export const MainBody = () => {
 	return (
 		<View style={{ flexGrow: 1 }}>
-
 			<View style={styles.row__container}>
 				<ScrollView horizontal={true}
 					showsHorizontalScrollIndicator={false}
@@ -30,10 +28,7 @@ export const MainBody = () => {
 				</ScrollView>
 			</View>
 			<Music />
-			<View>
-				<UserListItem />
-
-			</View>
+			<ChatList />
 		</View>
 	)
 }
@@ -70,15 +65,5 @@ const styles = StyleSheet.create({
 		borderRadius: 50,
 		backgroundColor: '#4169E1',
 
-	},
-	music__container: {
-		borderTopWidth: 0.2,
-		borderBottomWidth: 0.2,
-		borderStyle: 'solid',
-		borderColor: 'rgba(0, 0, 0, 0.5)',
-		height: 35,
-		backgroundColor: 'rgba(0, 0, 0, .1)',
-		paddingLeft: 15,
-		paddingRight: 15
 	}
 })
