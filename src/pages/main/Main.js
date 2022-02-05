@@ -58,8 +58,9 @@ const Main = () => {
 				<StickyHeader />
 				<ChatList openSelect={openSelect} select={select} setSelectArr={setSelectArr} selectArr={selectArr} />
 
-				{/* <Footer /> */}
+
 			</ScrollView>
+			<Footer />
 			<MenuTouchable openMenu={openMenu} showMenuAnimatedOut={showMenuAnimatedOut} />
 			<Menu showMenuAnimated={showMenuAnimated} />
 
