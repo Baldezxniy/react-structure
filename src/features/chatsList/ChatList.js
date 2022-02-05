@@ -1,5 +1,5 @@
 import { memo, useEffect } from "react"
-import { ActivityIndicator, ScrollView, View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { useChatList } from "../../apiHook/useChatList"
 import ChatListItem from "./ChatListItem"
@@ -10,7 +10,7 @@ const users = [
     {}
 ]
 
-const ChatList = memo(() => {
+const ChatList = memo(({ setSelectArr, openSelect, select, selectArr }) => {
     const dispatch = useDispatch()
     const chats = useChatList()
     useEffect(() => {
@@ -19,16 +19,17 @@ const ChatList = memo(() => {
     const loader = useSelector(getLoader)
 
     const stateChat = useSelector(getChats)
-    
     return (
-        <View>
+        <View >
             {
                 loader ?
-                    < ScrollView >
+                    < View >
                         {
                             stateChat.map(chat => {
                                 return (
-                                    <ChatListItem key={chat.chatId}
+                                    <ChatListItem selectArr={selectArr}
+                                        openSelect={openSelect} select={select}
+                                        setSelectArr={setSelectArr} key={chat.chatId}
                                         chatId={chat.chatId} userId={chat.userId}
                                         firstName={chat.firstName} lastName={chat.lastName}
                                         avatar={chat.avatar} online={chat.online} message={chat.message}
@@ -36,7 +37,7 @@ const ChatList = memo(() => {
                                 )
                             })
                         }
-                    </ScrollView>
+                    </View>
                     :
                     <View style={{ alignItems: 'center' }}>
                         <ActivityIndicator size="large" />

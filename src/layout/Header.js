@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Text, View, TouchableHighlight } from 'react-native';
 import ChatHeaderBackArrow from '../components/ChatHeaderBackArrow';
 import ChatHeaderButton from '../components/ChatHeaderButton';
 import ChatHeaderContent from '../components/ChatHeaderContent';
@@ -13,8 +13,17 @@ import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../features/search/SearchInput';
 import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
+import { Ionicons, MaterialIcons, AntDesign } from 'react-native-vector-icons'
+import DeleteChat from '../features/chatsList/DeleteChat';
+import { useState } from 'react';
 
-const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler }) => {
+
+
+const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect, selectArr, setSelectArr }) => {
+	const [chatDelete, setChatDelete] = useState(false)
+	const openDelete = () => { setChatDelete(true) }
+	const closeDelete = () => { setChatDelete(false) }
+	const clearSelect = () => { setSelectArr([]) }
 
 	switch (headerMode) {
 		case 'main': {
@@ -23,6 +32,33 @@ const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler }) => {
 					<HeadeMenuButtom showMenuAnimatedOn={showMenuAnimatedOn} />
 					<HeaderLogo />
 					<HeaderSearchButtom />
+				</View>
+			)
+		} case 'delete': {
+			return (
+				<View style={stylesHeader.header}>
+					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+						<TouchableHighlight onPress={closeSelect} style={{ marginRight: 10 }}>
+							<Ionicons name='ios-close-outline' style={{ color: '#fff', fontSize: 25 }} />
+						</TouchableHighlight>
+						<View>
+							<Text style={{ fontSize: 18 }}>
+								{selectArr.length}
+							</Text>
+						</View>
+					</View>
+					<View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', flexGrow: 1 }}>
+						<View style={{ marginRight: 20 }}>
+							<Ionicons name='ios-notifications-off-outline' style={{ color: '#fff', fontSize: 22 }} />
+						</View>
+						<View style={{ marginRight: 20 }}>
+							<MaterialIcons name='archive' style={{ color: '#fff', fontSize: 22 }} />
+						</View>
+						<DeleteChat clearSelect={clearSelect} openDelete={openDelete} selectArr={selectArr} closeDelete={closeDelete} chatDelete={chatDelete} />
+						<View >
+							<Ionicons name='ellipsis-horizontal' style={{ transform: [{ rotate: '90deg' }], fontSize: 22 }} />
+						</View>
+					</View>
 				</View>
 			)
 		} case 'search': {
@@ -53,7 +89,7 @@ const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler }) => {
 			return (
 				<View style={stylesHeader.header}>
 					<SettingHeaderBackArrow />
-					<SettingHeaderButton openMenuHeandler={openMenuHeandler}/>
+					<SettingHeaderButton openMenuHeandler={openMenuHeandler} />
 				</View>
 			)
 		}

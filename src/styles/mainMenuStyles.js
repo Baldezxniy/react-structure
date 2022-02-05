@@ -6,7 +6,7 @@ export const stylesMainMenu = StyleSheet.create({
         height: '100%',
         position: 'absolute',
         top: 0,
-        zIndex: 2,
+        zIndex: 10,
         flexDirection: 'row'
     },
     header__side__menu_left: {
@@ -55,7 +55,7 @@ export const stylesMainMenu = StyleSheet.create({
         height: '100%',
         width: '100%',
         position: 'absolute',
-        zIndex: 1
+        zIndex:0
     }
 
 })

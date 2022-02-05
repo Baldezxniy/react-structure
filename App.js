@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import { RoutesApp } from './src/app/Routes.js';
 import React from 'react-native'
 import { Provider } from 'react-redux';
@@ -9,9 +9,9 @@ export default () => {
 
   return (
     <Provider store={store}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <RoutesApp />
-      </View>
+      </SafeAreaView>
     </Provider>
   );
 }
@@ -19,5 +19,6 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 30
   },
 });

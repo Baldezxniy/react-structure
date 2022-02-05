@@ -24,6 +24,17 @@ export const stylesUserItemLIst = StyleSheet.create({
         borderColor: '#aaa5e8',
         borderWidth: 1
     },
+    img__select: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+        width: 16,
+        height: 16,
+        backgroundColor: 'green',
+        borderRadius: 50,
+        justifyContent:"center",
+        alignItems:"center"
+    },
     item__img: {
         width: 50,
         height: 50,

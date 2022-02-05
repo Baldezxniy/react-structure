@@ -18,7 +18,8 @@ const chatsListSlice = createSlice({
             state.loader = action.payload.loader
         },
         deleteChat: (state, action) => {
-            state.chats = state.chats.filter((chat) => chat.chatId !== action.payload.chatId)
+            
+            state.chats = state.chats.filter((chat) => !action.payload.selectArr.includes(chat.chatId))
         }
     }
 
@@ -33,7 +34,6 @@ export const getChatLIstTC = (payload) => dispatch => {
 
 }
 export const deleteChatTC = (payload) => dispatch => {
-    debugger
     dispatch(deleteChat(payload))
 }
 
