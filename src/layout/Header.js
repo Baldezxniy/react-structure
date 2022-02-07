@@ -10,16 +10,16 @@ import SearchHeaderClose from '../components/SearchHeaderClose';
 import SettingHeaderBackArrow from '../components/SettingHeaderBackArrow';
 import SettingHeaderButton from '../components/SettingHeaderButton';
 import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
-import SearchInput from '../features/search/SearchInput';
+import SearchInput from '../components/SearchInput';
 import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
-import { Ionicons, MaterialIcons, AntDesign } from 'react-native-vector-icons'
+import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import DeleteChat from '../features/chatsList/DeleteChat';
 import { useState } from 'react';
 
 
 
-const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect, selectArr, setSelectArr }) => {
+const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect, selectArr, setSelectArr, input, setInput }) => {
 	const [chatDelete, setChatDelete] = useState(false)
 	const openDelete = () => { setChatDelete(true) }
 	const closeDelete = () => { setChatDelete(false) }
@@ -65,8 +65,8 @@ const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect,
 			return (
 				<View style={stylesHeader.header}>
 					<SearchHeaderBackArrow />
-					<SearchInput />
-					<SearchHeaderClose />
+					<SearchInput input={input} setInput={setInput} />
+					<SearchHeaderClose input={input} setInput={setInput} />
 				</View>
 			)
 		} case 'chat': {
