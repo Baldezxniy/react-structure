@@ -1,9 +1,8 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { Text } from "react-native"
+import { Text, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { useSearchList } from "../../apiHook/useSearchList"
-import ResentSearchChatItem from "../resentSearchChat/ResentSearchChatItem"
 import { getLoading, getSearch } from "./searchListSelector"
 import { getSearchTC } from "./searchListSlice"
 
@@ -26,8 +25,8 @@ const SearchList = ({ input }) => {
         <>
             {
                 loading ?
-                    <View style={{ paddingHorizont: 15, marginTop: 20, alignItems: 'center' }}>
-                        <Text>
+                    <View style={{ paddingHorizontal: 15, marginTop: 20, alignItems: 'center' }}>
+                        <Text style={{fontSize:17, lineHeight:30, color:'rgba(0, 0, 0, 0.4)'}}>
                             А тут запрос на сервак должен быть но к сожелению эту функцию я не смог добавить
                         </Text>
                     </View>

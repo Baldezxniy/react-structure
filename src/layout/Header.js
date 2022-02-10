@@ -1,7 +1,6 @@
 import { Text, View, TouchableHighlight } from 'react-native';
 import ChatHeaderBackArrow from '../components/ChatHeaderBackArrow';
 import ChatHeaderButton from '../components/ChatHeaderButton';
-import ChatHeaderContent from '../components/ChatHeaderContent';
 import HeaderLogo from '../components/HeaderLogo';
 import HeadeMenuButtom from '../components/HeaderMenuButtom';
 import HeaderSearchButtom from '../components/HeaderSearchButtom';
@@ -13,13 +12,22 @@ import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../components/SearchInput';
 import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
-import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
-import DeleteChat from '../features/chatsList/DeleteChat';
+import {
+	Ionicons, MaterialIcons, AntDesign
+} from 'react-native-vector-icons'
+import DeleteChat from '../components/DeleteChat';
 import { useState } from 'react';
+import ChatHeaderContent from '../features/chatHeaderContent';
+import DeleteMessage from '../features/chatMessage/DeleteMessage';
 
 
 
-const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect, selectArr, setSelectArr, input, setInput }) => {
+const Header = ({
+	showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect,
+	selectArr, setSelectArr, input, setInput, messageArr, zeroingMessageArr,
+	userName, setUserName, userDeleteChat }) => {
+
+
 	const [chatDelete, setChatDelete] = useState(false)
 	const openDelete = () => { setChatDelete(true) }
 	const closeDelete = () => { setChatDelete(false) }
@@ -54,7 +62,7 @@ const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect,
 						<View style={{ marginRight: 20 }}>
 							<MaterialIcons name='archive' style={{ color: '#fff', fontSize: 22 }} />
 						</View>
-						<DeleteChat clearSelect={clearSelect} openDelete={openDelete} selectArr={selectArr} closeDelete={closeDelete} chatDelete={chatDelete} />
+						<DeleteChat userDeleteChat={userDeleteChat} clearSelect={clearSelect} openDelete={openDelete} selectArr={selectArr} closeDelete={closeDelete} chatDelete={chatDelete} />
 						<View >
 							<Ionicons name='ellipsis-horizontal' style={{ transform: [{ rotate: '90deg' }], fontSize: 22 }} />
 						</View>
@@ -73,8 +81,32 @@ const Header = ({ showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect,
 			return (
 				<View style={stylesHeader.header}>
 					<ChatHeaderBackArrow />
-					<ChatHeaderContent />
+					<ChatHeaderContent setUserName={setUserName} />
 					<ChatHeaderButton />
+				</View>
+			)
+		} case 'chatMessageDelete': {
+			return (
+				<View style={stylesHeader.header}>
+					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+						<TouchableHighlight onPress={zeroingMessageArr} style={{ marginRight: 10 }}>
+							<Ionicons name='ios-close-outline' style={{ color: '#fff', fontSize: 25 }} />
+						</TouchableHighlight>
+						<View>
+							<Text style={{ fontSize: 18 }}>
+								{messageArr.length}
+							</Text>
+						</View>
+					</View>
+					<View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', flexGrow: 1 }}>
+						<View style={{ marginRight: 30 }}>
+							<MaterialIcons name='content-copy' style={{ color: '#fff', fontSize: 22 }} />
+						</View>
+						<View style={{ marginRight: 30 }}>
+							<Ionicons name='ios-return-up-forward' style={{ fontSize: 22 }} />
+						</View>
+						<DeleteMessage zeroingMessageArr={zeroingMessageArr} messageArr={messageArr} userName={userName} />
+					</View>
 				</View>
 			)
 		} case 'userProfile': {

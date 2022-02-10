@@ -1,10 +1,10 @@
 import { Text, View } from "react-native"
 
-const UserName = () => {
+const UserName = ({ firstName, lastName }) => {
     return (
         <View>
             <Text style={{ color: '#fff', fontSize: 17, fontWeight: '700' }}>
-                Вова
+                {`${firstName}${!!lastName ? ` ${lastName}` : ''}`}
             </Text>
         </View>
     )

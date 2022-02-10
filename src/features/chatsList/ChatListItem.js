@@ -10,7 +10,8 @@ import { memo } from "react"
 import { useNavigate } from "react-router-native";
 
 
-const ChatListItem = memo(({ avatar, firstName, lastName, online, message, chatId, setSelectArr, openSelect, select, selectArr }) => {
+const ChatListItem = memo(({ avatar, firstName, lastName, online, message,
+    chatId, setSelectArr, openSelect, select, selectArr, setUserDeleteChat }) => {
 
 
     const navigate = useNavigate()
@@ -22,10 +23,13 @@ const ChatListItem = memo(({ avatar, firstName, lastName, online, message, chatI
                 onPress={() => {
 
                     if (select) {
+
                         if (!selectArr.includes(chatId)) {
+                            setUserDeleteChat(prev => [...prev, { avatar, firstName, lastName, chatId }])
                             setSelectArr(prev => [...prev, chatId])
                         } else {
                             setSelectArr(prev => prev.filter(chat => chat !== chatId))
+                            setUserDeleteChat(prev => prev.filter(chat => chat.chatId !== chatId))
                         }
                     } else {
                         navigate('/chat')
@@ -34,6 +38,7 @@ const ChatListItem = memo(({ avatar, firstName, lastName, online, message, chatI
                 onLongPress={() => {
                     if (!select) {
                         openSelect()
+                        setUserDeleteChat([{ avatar, firstName, lastName, chatId }])
                         setSelectArr(prev => [...prev, chatId])
                     }
                 }}

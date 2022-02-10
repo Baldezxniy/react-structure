@@ -3,7 +3,7 @@ import { ScrollView, View } from "react-native";
 import { SearchStyles } from "../../styles/SearchStyles";
 import RecentUserList from "../recentSearchUser/RecentUserList";
 import ResertSearchChat from "../resentSearchChat";
-import SearchList from "./searchList";
+import SearchList from "./SearchList";
 
 const SearchContent = memo(({ input }) => {
 

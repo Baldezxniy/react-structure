@@ -6,8 +6,8 @@ export const stylesHeader = StyleSheet.create({
         paddingRight: 15,
         flexDirection: 'row',
         height: 50,
-        width: '100%'
-
+        width: '100%',
+        backgroundColor:'#282045'
     },
     header__left__buttom: {
         justifyContent: 'center',

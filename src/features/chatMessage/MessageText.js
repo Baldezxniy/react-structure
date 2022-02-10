@@ -1,12 +1,10 @@
 import { Text, View } from "react-native"
 
-const MeassageText = ({ text }) => {
+const MeassageText = ({ text, isMessage }) => {
     return (
-        <View style={{ justifyContent: 'flex-start', paddingLeft: 15, paddingRight: 20, paddingTop: 8, flexGrow: 1, wordWrap: 'break-word' }}>
-            <Text>
-                {text}
-            </Text>
-        </View>
+        <Text style={{ justifyContent: 'flex-start', flexGrow: 1, paddingTop: 8, paddingRight: 10, paddingBottom: isMessage ? 0 : 8 }}>
+            {text}
+        </Text>
     )
 }
 

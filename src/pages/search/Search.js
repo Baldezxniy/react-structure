@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { View } from 'react-native'
 import SearchFolderList from '../../components/SearchFolderList'
-import SearchContent from '../../features/searchContent/searchContent'
+import SearchContent from '../../features/searchContent/SearchContent'
 import Header from '../../layout/Header'
 import Music from '../../layout/Music'
 

@@ -6,11 +6,7 @@ import ChatListItem from "./ChatListItem"
 import { getChatLIstTC } from "./chatListSlice"
 import { getChats, getLoader } from "./chatsSelector"
 
-const users = [
-    {}
-]
-
-const ChatList = memo(({ setSelectArr, openSelect, select, selectArr }) => {
+const ChatList = memo(({ setSelectArr, openSelect, select, selectArr, setUserDeleteChat }) => {
     const dispatch = useDispatch()
     const chats = useChatList()
     useEffect(() => {
@@ -27,10 +23,10 @@ const ChatList = memo(({ setSelectArr, openSelect, select, selectArr }) => {
                         {
                             stateChat.map(chat => {
                                 return (
-                                    <ChatListItem selectArr={selectArr}
-                                        openSelect={openSelect} select={select}
+                                    <ChatListItem setUserDeleteChat={setUserDeleteChat}
+                                        selectArr={selectArr} openSelect={openSelect}
                                         setSelectArr={setSelectArr} key={chat.chatId}
-                                        chatId={chat.chatId} userId={chat.userId}
+                                        chatId={chat.chatId} userId={chat.userId} select={select}
                                         firstName={chat.firstName} lastName={chat.lastName}
                                         avatar={chat.avatar} online={chat.online} message={chat.message}
                                     />

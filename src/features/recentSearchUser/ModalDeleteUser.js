@@ -40,7 +40,7 @@ const ModalDeleteUser = memo(({ deleteModal, closeModal, firstName, lastName, us
                                 </TouchableOpacity>
                             </View>
                             <View>
-                                <TouchableOpacity onPress={deleteHandle} style={{ borderRadius: 5, borderColor: '#288afa', borderWidth: 0.5, padding: 5 }}>
+                                <TouchableOpacity onPress={deleteHandle} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
                                     <Text style={{ color: '#fa143e' }}>
                                         УДАЛИТЬ
                                     </Text>

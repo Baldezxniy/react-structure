@@ -17,7 +17,7 @@ const Main = () => {
 	const showMenuAnimatedHandler = (left, finish) => {
 		Animated.timing(showMenuAnimated, {
 			toValue: left,
-			duration: 5000,
+			duration: 500,
 			useNativeDriver: false
 		}).start(({ finished }) => {
 			setOpenMenu(finish)
@@ -45,6 +45,8 @@ const Main = () => {
 			setSelect(false)
 		}
 	}, [selectArr])
+
+	const [userDeleteChat, setUserDeleteChat] = useState([])
 	return (
 
 		<View style={{ flex: 1 }}>
@@ -53,10 +55,10 @@ const Main = () => {
 
 
 
-				<Header setSelectArr={setSelectArr} selectArr={selectArr} closeSelect={closeSelect} headerMode={select ? 'delete' : 'main'}
+				<Header userDeleteChat={userDeleteChat} setSelectArr={setSelectArr} selectArr={selectArr} closeSelect={closeSelect} headerMode={select ? 'delete' : 'main'}
 					showMenuAnimatedOn={showMenuAnimatedOn} />
 				<StickyHeader />
-				<ChatList openSelect={openSelect} select={select} setSelectArr={setSelectArr} selectArr={selectArr} />
+				<ChatList setUserDeleteChat={setUserDeleteChat} openSelect={openSelect} select={select} setSelectArr={setSelectArr} selectArr={selectArr} />
 
 
 			</ScrollView>
