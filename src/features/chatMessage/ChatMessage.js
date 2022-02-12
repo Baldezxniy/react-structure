@@ -3,6 +3,8 @@ import MessageChange from "./MessageChange"
 import MeassageText from "./MessageText"
 import MessageTime from "./MessageTime"
 import { Ionicons } from 'react-native-vector-icons'
+import { Animated, PanResponder } from 'react-native'
+import { useRef } from 'react'
 
 
 const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, setMessageArr, messageId, zeroingMessageArr, setShowMenu, setPosition, pintMessage, check }) => {
@@ -15,8 +17,34 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
     const messageCheck = messageArr.length > 0
     const backgroundColor = messageArr.includes(messageId)
 
+
+
+    const messageSwip = useRef(new Animated.ValueXY()).current;
+    const panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: () => true,
+        onPanResponderMove: Animated.event([
+            null,
+            {
+                dx: messageSwip.x, // x,y are Animated.Value
+            },
+        ]),
+        onPanResponderRelease: () => {
+            Animated.spring(
+                messageSwip, // Auto-multiplexed
+                {
+                    toValue: { x: 0, y: 0 },
+                    duration: 100,
+                    useNativeDriver: false
+                } // Back to zero
+            ).start(() => {
+                //dispatch...
+            });
+        },
+    });
+
+
     return (
-        <>
+        <Animated.View style={{ ...messageSwip.getLayout(), width: '100%' }}>
 
             <TouchableHighlight
                 delayLongPress={100}
@@ -61,7 +89,7 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
                         </View>
                     </View>}
                     <View style={{ flexGrow: 1, paddingHorizontal: 15, flexDirection: 'row', justifyContent: justifyContent, }}>
-                        <View style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
+                        <View {...panResponder.panHandlers} style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
                             <>
                                 {
                                     !!pintMessage.text &&
@@ -101,7 +129,7 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
                     </View>
                 </>
             </TouchableHighlight>
-        </>
+        </Animated.View >
 
     )
 }

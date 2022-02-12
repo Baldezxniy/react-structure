@@ -3,7 +3,7 @@ import React from 'react'
 
 export const ModalCopy = ({ openCopy, setOpenCopy, textCopy, setTextCopy }) => {
     return (
-        <Modal
+        <Modal 
             transparent={true}
             visible={openCopy}
 

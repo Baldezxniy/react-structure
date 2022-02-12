@@ -23,11 +23,8 @@ export const userStyle = StyleSheet.create({
         justifyContent: 'center'
     },
     info__item: {
-        borderColor: 'rgba(0, 0, 0, 0.5)',
-        borderStyle: 'solid',
-        borderBottomWidth: 1,
+        paddingLeft: 20,
         paddingBottom: 13,
-        marginTop: 10
     },
     notification__border: {
         borderColor: 'rgba(0, 0, 0, 0.5)',
@@ -38,6 +35,7 @@ export const userStyle = StyleSheet.create({
     },
     container__folders: {
         flexDirection: 'row',
+        height: 36.7
     },
     folders__item: {
         paddingTop: 10,

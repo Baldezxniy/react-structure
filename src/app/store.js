@@ -8,6 +8,9 @@ import recentSearchUserReducer from '../features/recentSearchUser/recentSearchUs
 import searchListReducer from '../features/searchContent/searchListSlice'
 import chatHeaderReducer from "../features/chatHeaderContent/chatHeaderSlice";
 import chatMessageReducer from "../features/chatMessage/chatMessageSlice";
+import userProfileDataReducer from "../features/userProfileData/userProfileDataSlice";
+import userProfileListInfoReducer from "../features/userProfileInfo/userProfileListInfoSlice";
+import userProfileContentReducer from "../features/userProfileContent/userProfileContentSlice";
 
 
 export const store = configureStore({
@@ -19,7 +22,10 @@ export const store = configureStore({
         searchResentChatList: resentSearchChatReducer,
         searchList: searchListReducer,
         chatHeader: chatHeaderReducer,
-        chatMessage: chatMessageReducer
+        chatMessage: chatMessageReducer,
+        userProfileData: userProfileDataReducer,
+        userProfileListInfo: userProfileListInfoReducer,
+        userProfileContent: userProfileContentReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })

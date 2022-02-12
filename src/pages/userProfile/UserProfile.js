@@ -1,25 +1,22 @@
 import { View, ScrollView } from 'react-native'
-
 import Header from '../../layout/Header'
-
-import USerProfileData from '../../components/UserProfileData'
-import Music from '../../layout/Music'
 import UserProfileInfo from '../../components/UserProfileInfo'
-import FolderList from '../../features/userProfileFolder/FolderList'
-import UserProfileImgList from '../../features/userProfileImgeList/UserProfileImgeList'
+import USerProfileData from '../../features/userProfileData'
+import UserProfileContent from '../../features/userProfileContent'
+import { useState } from 'react'
 
 
 
 const UserProfile = (props) => {
+
+	const [userName, setUserName] = useState() 
 	return (
 		<View style={{ flex: 1 }}>
 			<Header headerMode={'userProfile'} />
 			<ScrollView>
-				<USerProfileData />
+				<USerProfileData setUserName={setUserName} />
 				<UserProfileInfo />
-				<FolderList />
-				<Music />
-				<UserProfileImgList />
+				<UserProfileContent userName={userName} />
 			</ScrollView>
 		</View>
 	)

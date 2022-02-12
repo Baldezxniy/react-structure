@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-native";
 
 
 const ChatListItem = memo(({ avatar, firstName, lastName, online, message,
-    chatId, setSelectArr, openSelect, select, selectArr, setUserDeleteChat }) => {
+    chatId, setSelectArr, openSelect, select, selectArr, setUserDeleteChat, lastItem }) => {
 
 
     const navigate = useNavigate()
@@ -46,7 +46,7 @@ const ChatListItem = memo(({ avatar, firstName, lastName, online, message,
 
                 <View style={stylesUserItemLIst.item__container}>
                     <UserAavatar avatar={avatar} online={online} select={select} selectArr={selectArr} chatId={chatId} />
-                    <View style={{ flexGrow: 1 }} >
+                    <View style={{ flexGrow: 1, borderBottomWidth: lastItem ? 0.6 : 0, paddingBottom: 10, paddingRight: 15, }} >
                         <View style={stylesUserItemLIst.item__name}>
                             <UserName firstName={firstName} lastName={lastName} />
                             <View style={{ flexDirection: 'row' }}>

@@ -19,14 +19,14 @@ export const RoutesApp = (props) => {
 		dispatch(initializationSucses(profile))
 	}
 	setTimeout(initialzationApp, 2000)
-	
+
 	const initialization = useSelector(state => state.app.initialization)
-	
+
 	return (
 		<>
 			{
 				!initialization ?
-					<View style={{ flex:1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#fff' }}>
+					<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
 						<ActivityIndicator />
 					</View>
 					:
@@ -35,7 +35,7 @@ export const RoutesApp = (props) => {
 							<Route exact path='/search' element={<Search />} />
 							<Route path='/chat' element={<Chat />} />
 							<Route exact path="/" element={<Main />} />
-							<Route path='/profile' element={<UserProfile />} />
+							<Route path='/profile/' element={<UserProfile />} />
 							<Route path='/add-message' element={<AddMessage />} />
 							<Route path='/add-contact' element={<AddContact />} />
 							<Route path='/setting' element={<SettingPage />} />

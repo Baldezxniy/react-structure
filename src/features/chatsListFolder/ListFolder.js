@@ -3,7 +3,7 @@ import { mainStyles } from "../../styles/mainStyles"
 
 const ListFolder = () => {
     return (
-        <View style={mainStyles.row__container}>
+        <View style={[mainStyles.row__container, { backgroundColor: '#282045' }]}>
             <ScrollView horizontal={true}
                 showsHorizontalScrollIndicator={false}
             >

@@ -4,10 +4,10 @@ export const stylesUserItemLIst = StyleSheet.create({
     item__container: {
         flexDirection: 'row',
         paddingLeft: 15,
-        paddingRight: 15,
         paddingTop: 10,
-        paddingBottom: 10,
-        width: '100%'
+        width: '100%',
+        
+        
     },
     item__img__container: {
         width: 60,

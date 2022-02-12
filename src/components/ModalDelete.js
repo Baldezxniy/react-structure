@@ -2,25 +2,29 @@ import { useState } from "react";
 import { memo } from "react";
 import { Modal, Text, TouchableHighlight, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
-import { useDispatch } from "react-redux";
-import { deleteMessageTC } from "./chatMessageSlice";
+import { DeleteMessageBtn } from "../features/chatMessage/DeleteMessageBtn";
+import { DeletePhotoBtn } from "../features/userProfileContent/DeletePhotoBtn";
 
-const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMessageArr }) => {
+const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMessageArr, deleteMode, photoArr, setPhotoArr }) => {
 
-
-    const dispatch = useDispatch()
-
-    const handleDeleteMessage = () => {
-        dispatch(deleteMessageTC(messageArr))
-        zeroingMessageArr()
+    const deleteButton = () => {
+        switch (deleteMode) {
+            case 'message': {
+                return (
+                    <DeleteMessageBtn zeroingMessageArr={zeroingMessageArr} messageArr={messageArr} check={check} />
+                )
+            } case 'content': {
+                return (
+                    <DeletePhotoBtn photoArr={photoArr} check={check} setPhotoArr={setPhotoArr} />
+                )
+            }
+        }
     }
-
     const [check, setCheck] = useState(false)
     return (
         <Modal
             transparent={true}
             visible={modal}
-
         >
             <TouchableHighlight underlayColor='none' onPressOut={closeModal} style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
 
@@ -38,7 +42,13 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
                         <View style={{ marginTop: 20 }}>
 
                             <Text style={{ fontSize: 14.5 }}>
-                                Вы точно хотите удалить {messageArr.length === 1 ? 'это собщения' : "эти сообщения"} ?
+
+                                {
+                                    !!messageArr && `Вы точно хотите удалить ${messageArr.length === 1 ? 'это собщения' : "эти сообщения"} ?`
+                                }
+                                {
+                                    !!photoArr && `Вы точно хотите удалить ${photoArr.length === 1 ? 'это собщения' : "эти сообщения"} ?`
+                                }
                             </Text>
                         </View>
                         <View style={{ marginTop: 20, flexDirection: "row", alignItems: "center" }}>
@@ -66,11 +76,7 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
                                 </TouchableOpacity>
                             </View>
                             <View>
-                                <TouchableOpacity onPress={handleDeleteMessage} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
-                                    <Text style={{ color: '#fa143e' }}>
-                                        УДАЛИТЬ
-                                    </Text>
-                                </TouchableOpacity>
+                                {deleteButton()}
                             </View>
                         </View>
                     </>

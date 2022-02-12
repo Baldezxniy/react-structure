@@ -1,21 +1,36 @@
-import { memo } from "react";
-import { Text, View } from "react-native";
+import { memo, useState } from "react";
+import { Text, View, TouchableHighlight, Vibration } from "react-native";
+import { ModalCopy } from "../../components/ModalCopy";
 import { userStyle } from "../../styles/userStyles";
 
-const UserProfileTelephone = memo((props) => {
+const UserProfileTelephone = memo(({ telephone }) => {
+
+    const [openCopy, setOpenCopy] = useState(false)
+    const [textCopy, setTextCopy] = useState('')
+    const handlePress = () => {
+        Vibration.vibrate(50)
+        setOpenCopy(true);
+        setTextCopy(telephone)
+    }
     return (
-        <View style={userStyle.info__item}>
-            <View >
-                <Text style={{ fontSize: 16 }}>
-                    +1 234 123 41221
-                </Text>
-            </View>
-            <View>
-                <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 13, marginTop: 5 }}>
-                    Телефон
-                </Text>
-            </View>
-        </View>
+        <>
+            <ModalCopy openCopy={openCopy} setOpenCopy={setOpenCopy} textCopy={textCopy} setTextCopy={setTextCopy} />
+
+            <TouchableHighlight onLongPress={handlePress} underlayColor='#82838c' style={userStyle.info__item}>
+                <>
+                    <View >
+                        <Text style={{ fontSize: 16 }}>
+                            {telephone}
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 13, marginTop: 5 }}>
+                            Телефон
+                        </Text>
+                    </View>
+                </>
+            </TouchableHighlight>
+        </>
     )
 })
 

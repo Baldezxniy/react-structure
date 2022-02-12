@@ -21,9 +21,12 @@ const ChatList = memo(({ setSelectArr, openSelect, select, selectArr, setUserDel
                 loader ?
                     < View >
                         {
-                            stateChat.map(chat => {
+                            stateChat.map((chat, index) => {
+
                                 return (
-                                    <ChatListItem setUserDeleteChat={setUserDeleteChat}
+                                    <ChatListItem
+                                        lastItem={index + 1 !== stateChat.length}
+                                        setUserDeleteChat={setUserDeleteChat}
                                         selectArr={selectArr} openSelect={openSelect}
                                         setSelectArr={setSelectArr} key={chat.chatId}
                                         chatId={chat.chatId} userId={chat.userId} select={select}
