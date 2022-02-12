@@ -39,16 +39,18 @@ export const addMessageTC = payload => (dispatch, getState) => {
 
     const message = {
         userId: 1, messageId: getState().chatMessage.messages.length + 1,
-        text: payload.message, changed: false,
+        text: payload.text, changed: false,
         time: new Date().toLocaleTimeString().slice(0, -3),
         check: false,
+        firstName: payload.firstName,
+        lastName: payload.lastName,
         pintMessage: {
-            userId: null,
+            userId: 2,
             name: {
-                firstName: null
+                firstName: payload.pintFirstName
             },
-            messageId: null,
-            text: null
+            messageId: payload.pintMessageId,
+            text: payload.pinttext
         }
     }
     dispatch(addMessage({ message: message }))

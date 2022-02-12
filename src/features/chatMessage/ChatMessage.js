@@ -1,4 +1,4 @@
-import { Text, TouchableHighlight, View } from "react-native"
+import { Easing, Text, TouchableHighlight, View } from "react-native"
 import MessageChange from "./MessageChange"
 import MeassageText from "./MessageText"
 import MessageTime from "./MessageTime"
@@ -7,7 +7,10 @@ import { Animated, PanResponder } from 'react-native'
 import { useRef } from 'react'
 
 
-const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, setMessageArr, messageId, zeroingMessageArr, setShowMenu, setPosition, pintMessage, check }) => {
+const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
+    firstName, lastName, setMessageArr, messageId, zeroingMessageArr, pintMessage, check, setPintMessage }) => {
+
+
     const myId = 1
     const justifyContent = myId !== userId ? 'flex-start' : 'flex-end'
 
@@ -27,27 +30,38 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
             {
                 dx: messageSwip.x, // x,y are Animated.Value
             },
-        ]),
+
+        ],
+            { useNativeDriver: false },
+        ),
         onPanResponderRelease: () => {
+
+            if (myId === userId) {
+                if (messageSwip.x._value < -50)
+                    setPintMessage({ messageId, text, firstName, lastName })
+            } else if (myId !== userId) {
+                if (messageSwip.x._value > 50) {
+                    setPintMessage({ messageId, text, firstName, lastName })
+                }
+            }
             Animated.spring(
                 messageSwip, // Auto-multiplexed
                 {
                     toValue: { x: 0, y: 0 },
                     duration: 100,
+                    easing: Easing.linear,
                     useNativeDriver: false
                 } // Back to zero
-            ).start(() => {
-                //dispatch...
-            });
+            ).start();
         },
     });
-
+    const noSwip = messageArr.length === 0 ? panResponder.panHandlers : null
 
     return (
-        <Animated.View style={{ ...messageSwip.getLayout(), width: '100%' }}>
+        <Animated.View style={{ transform: [{ translateX: messageArr.length === 0 ? messageSwip.x : 0 }], width: '100%' }}  >
 
             <TouchableHighlight
-                delayLongPress={100}
+                delayLongPress={400}
                 onLongPress={() => {
                     if (messageArr.length === 0) {
                         setChatMode('chatMessageDelete')
@@ -63,10 +77,6 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
                     }
                 }}
                 onPress={(e) => {
-                    if (messageArr.length === 0) {
-                        setShowMenu(true)
-                        setPosition(e.touchHistory.touchBank[0].currentPageX, e.touchHistory.touchBank[0].currentPageY)
-                    }
                     if (messageCheck) {
                         if (messageArr.length > 0 && !messageArr.includes(messageId)) {
                             setMessageArr(prev => [...prev, messageId])
@@ -89,11 +99,11 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
                         </View>
                     </View>}
                     <View style={{ flexGrow: 1, paddingHorizontal: 15, flexDirection: 'row', justifyContent: justifyContent, }}>
-                        <View {...panResponder.panHandlers} style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
+                        <View {...noSwip} style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
                             <>
                                 {
                                     !!pintMessage.text &&
-                                    <TouchableHighlight onPress={() => { '' }} style={{ flexDirection: "row", paddingTop: 7 }}>
+                                    <View style={{ flexDirection: "row", paddingTop: 7 }}>
                                         <>
                                             <View style={{ borderColor: '#62a0fc', borderLeftWidth: 2, width: 10 }}>
 
@@ -111,7 +121,7 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode, set
                                                 </View>
                                             </View>
                                         </>
-                                    </TouchableHighlight>
+                                    </View>
                                 }
                             </>
                             <View style={{ flexDirection: isMessage ? 'column' : 'row', maxWidth: 300 }}>

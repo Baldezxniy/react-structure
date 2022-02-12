@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { memo } from "react";
-import { Dimensions, ImageBackground, ScrollView, Text, View } from "react-native";
+import { ImageBackground, ScrollView, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useMessage } from "../../apiHook/useMessage";
 import ChatMessage from "./ChatMessage";
 import { getLoading, getMessage } from "./chatMessageSelector";
 import { getMessageTC } from "./chatMessageSlice";
 
-const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingMessageArr }) => {
+const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingMessageArr, setPintMessage }) => {
     const dispatch = useDispatch()
     const messages = useMessage()
 
@@ -16,15 +17,22 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
     }, [])
     const messageState = useSelector(getMessage)
     const loading = useSelector(getLoading)
+    const [isAutoScroll, setIsAutoScroll] = useState(false)
+    const ref = useRef()
 
-    const [positionX, setPositionX] = useState(0)
-    const [positionY, setPositionY] = useState(0)
-    const setPosition = (x, y) => {
-        setPositionX(x);
-        setPositionY(y)
-    }
-    const [showMenu, setShowMenu] = useState(false)
+    // const onScrollHandle = (e) => {
+    //     debugger
+    //     const element = e.currentTarget;
+    //     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+    //         !isAutoScroll && setIsAutoScroll(true)
+    //     } else {
+    //         setIsAutoScroll(false)
+    //     }
+    // }
 
+    // // useEffect(()=>{
+    // //     ref.current.scrollIntoView()
+    // // },[])
     return (
 
 
@@ -45,14 +53,18 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                                             {
                                                 [...messageState].map((message) => {
 
-                                                    return <ChatMessage check={message.check}
-                                                        setPosition={setPosition} positionX={positionX} positionY={positionY} showMenu={showMenu} setShowMenu={setShowMenu}
+                                                    return <ChatMessage check={message.check} setPintMessage={setPintMessage}
                                                         messageId={message.messageId} pintMessage={message.pintMessage}
                                                         zeroingMessageArr={zeroingMessageArr} setChatMode={setChatMode}
                                                         messageArr={messageArr} setMessageArr={setMessageArr} key={message.messageId}
-                                                        userId={message.userId} text={message.text} changed={message.changed} time={message.time} />
+                                                        userId={message.userId} text={message.text} changed={message.changed} time={message.time}
+                                                        firstName={message.firstName} lastName={message.lastName}
+                                                    />
                                                 })
                                             }
+                                            <View ref={ref}>
+
+                                            </View>
                                         </View >
                                     </ScrollView>}
                                     {
@@ -69,6 +81,7 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                             <></>
                     }
                 </>
+
             </ImageBackground >
             {/* <>
                 {

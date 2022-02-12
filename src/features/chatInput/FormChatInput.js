@@ -2,14 +2,11 @@ import { Formik } from "formik";
 import { Text, TextInput, TouchableHighlight, View } from "react-native";
 import { chatStyles } from "../../styles/chatStyles";
 import { MaterialCommunityIcons, SimpleLineIcons, AntDesign, Ionicons } from 'react-native-vector-icons'
-import { useState } from "react";
-import SendMessageButton from "../chatMessage/SendMessageButton";
 import { useDispatch } from "react-redux";
 import { addMessageTC } from "../chatMessage/chatMessageSlice";
 
 
-const FormChatInput = (props) => {
-    const [pintMessage, setPintMessage] = useState(false)
+const FormChatInput = ({ pintMessage, setPintMessage }) => {
 
 
     const dispatch = useDispatch()
@@ -21,7 +18,12 @@ const FormChatInput = (props) => {
 
             onSubmit={(values, { setSubmitting }) => {
                 if (values.text) {
-                    dispatch(addMessageTC({ message: values.text }))
+                    dispatch(addMessageTC({
+
+                        text: values.text, pinttext: pintMessage != null ? pintMessage.text : null,
+                        pintFirstName: pintMessage != null ? pintMessage.firstName : null, firstName: 'БАЛДЁЖНЫЙ', lastName: '', pintMessageId: pintMessage != null ? pintMessage.messageId : null
+                    }))
+                    setPintMessage(null)
                     values.text = ''
                     setSubmitting(false)
                 }
@@ -37,17 +39,17 @@ const FormChatInput = (props) => {
                             <View style={{ justifyContent: "center", flexGrow: 1, marginTop: 0 }}>
                                 <View>
                                     <Text style={{ color: '#189fed', fontSize: 17 }}>
-                                        Vovik
+                                        {pintMessage.firstName}
                                     </Text>
                                 </View>
                                 <View style={{ marginTop: 0, }}>
                                     <Text style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
-                                        2 сообщения
+                                        {pintMessage.text}
                                     </Text>
                                 </View>
                             </View>
                             <View style={{ justifyContent: "center" }}>
-                                <TouchableHighlight onPress={() => { setPintMessage(false) }}>
+                                <TouchableHighlight onPress={() => { setPintMessage(null) }}>
                                     <AntDesign name='close' style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 22 }} />
                                 </TouchableHighlight>
                             </View>
@@ -77,7 +79,7 @@ const FormChatInput = (props) => {
                             {!values.text && <View style={chatStyles.input__button}>
                                 <SimpleLineIcons name='paper-clip' style={{ fontSize: 22, color: 'rgba(0, 0, 0, 0.5)' }} />
                             </View>}
-                            <View style={{ justifyContent: 'flex-end', paddingLeft:15 }}>
+                            <View style={{ justifyContent: 'flex-end', paddingLeft: 15 }}>
                                 {
                                     !!values.text ?
                                         <TouchableHighlight onPress={handleSubmit}>

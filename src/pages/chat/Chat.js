@@ -15,7 +15,7 @@ const Chat = memo(({ }) => {
 		setChatMode('chat')
 		setMessageArr([])
 	}
-
+	const [pintMessage, setPintMessage] = useState(null)
 	const [userName, setUserName] = useState({})
 	return (
 		<View style={{ flex: 1 }}>
@@ -23,8 +23,8 @@ const Chat = memo(({ }) => {
 			{isFloating &&
 				<Music />
 			}
-			<ChatMessageList messageArr={messageArr} setMessageArr={setMessageArr} setChatMode={setChatMode} zeroingMessageArr={zeroingMessageArr} />
-			<FormChatInput />
+			<ChatMessageList setPintMessage={setPintMessage} messageArr={messageArr} setMessageArr={setMessageArr} setChatMode={setChatMode} zeroingMessageArr={zeroingMessageArr} />
+			<FormChatInput pintMessage={pintMessage} setPintMessage={setPintMessage} />
 		</View>
 	)
 })
