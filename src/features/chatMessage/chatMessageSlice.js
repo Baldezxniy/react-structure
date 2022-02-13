@@ -36,9 +36,9 @@ export const deleteMessageTC = payload => dispatch => {
 }
 
 export const addMessageTC = payload => (dispatch, getState) => {
-
+    
     const message = {
-        userId: 1, messageId: getState().chatMessage.messages.length + 1,
+        userId: 1, messageId: getState().chatMessage.messages.length + 2,
         text: payload.text, changed: false,
         time: new Date().toLocaleTimeString().slice(0, -3),
         check: false,

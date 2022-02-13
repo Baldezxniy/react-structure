@@ -35,14 +35,11 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
             { useNativeDriver: false },
         ),
         onPanResponderRelease: () => {
-
-            if (myId === userId) {
-                if (messageSwip.x._value < -50)
-                    setPintMessage({ messageId, text, firstName, lastName })
-            } else if (myId !== userId) {
-                if (messageSwip.x._value > 50) {
-                    setPintMessage({ messageId, text, firstName, lastName })
-                }
+            if (messageSwip.x._value < -50) {
+                setPintMessage({ messageId, text, firstName, lastName })
+            } else if (messageSwip.x._value > 30) {
+                setChatMode('chatMessageDelete')
+                setMessageArr(prev => [...prev, messageId])
             }
             Animated.spring(
                 messageSwip, // Auto-multiplexed
@@ -55,18 +52,29 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
             ).start();
         },
     });
-    const noSwip = messageArr.length === 0 ? panResponder.panHandlers : null
+    let noSwip = messageArr.length === 0 ? panResponder.panHandlers : null
 
     return (
-        <Animated.View style={{ transform: [{ translateX: messageArr.length === 0 ? messageSwip.x : 0 }], width: '100%' }}  >
 
-            <TouchableHighlight
-                delayLongPress={400}
-                onLongPress={() => {
-                    if (messageArr.length === 0) {
-                        setChatMode('chatMessageDelete')
-                        setMessageArr(prev => [...prev, messageId])
-                    } else if (messageArr.length > 0 && !messageArr.includes(messageId)) {
+        <TouchableHighlight
+
+            delayLongPress={400}
+            onLongPress={() => {
+                if (messageArr.length === 0) {
+                    setMessageArr(prev => [...prev, messageId])
+                } else if (messageArr.length > 0 && !messageArr.includes(messageId)) {
+                    setMessageArr(prev => [...prev, messageId])
+                } else if (messageArr.length === 1 && messageArr.includes(messageId)) {
+                    zeroingMessageArr()
+                } else if (messageArr.length > 0 && messageArr.includes(messageId)) {
+                    setMessageArr(prev => {
+                        return prev.filter(message => message !== messageId)
+                    })
+                }
+            }}
+            onPress={(e) => {
+                if (messageCheck) {
+                    if (messageArr.length > 0 && !messageArr.includes(messageId)) {
                         setMessageArr(prev => [...prev, messageId])
                     } else if (messageArr.length === 1 && messageArr.includes(messageId)) {
                         zeroingMessageArr()
@@ -75,31 +83,20 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
                             return prev.filter(message => message !== messageId)
                         })
                     }
-                }}
-                onPress={(e) => {
-                    if (messageCheck) {
-                        if (messageArr.length > 0 && !messageArr.includes(messageId)) {
-                            setMessageArr(prev => [...prev, messageId])
-                        } else if (messageArr.length === 1 && messageArr.includes(messageId)) {
-                            zeroingMessageArr()
-                        } else if (messageArr.length > 0 && messageArr.includes(messageId)) {
-                            setMessageArr(prev => {
-                                return prev.filter(message => message !== messageId)
-                            })
+                }
+            }}
+            underlayColor='none' style={{ flexDirection: "row", backgroundColor: backgroundColor ? 'rgba(77, 82, 176, 0.5)' : 'rgba(0, 0, 0, 0)' }}>
+            <>
+                {messageCheck && <View style={{ justifyContent: "center", alignItems: 'center', paddingLeft: 15 }}>
+                    <View style={{ borderWidth: 1, borderColor: '#616166', width: 25, height: 25, borderRadius: 50, backgroundColor: backgroundColor ? '#00ff2a' : 'rgba(0, 0, 0, 0)', justifyContent: "center", alignItems: 'center', }}>
+                        {
+                            messageArr.includes(messageId) && <Ionicons name='ios-checkmark' style={{ fontSize: 15 }} />
                         }
-                    }
-                }}
-                underlayColor='none' style={{ flexDirection: "row", backgroundColor: backgroundColor ? '#9fa1d4' : 'rgba(0, 0, 0, 0)' }}>
-                <>
-                    {messageCheck && <View style={{ justifyContent: "center", alignItems: 'center', paddingLeft: 15 }}>
-                        <View style={{ borderWidth: 1, borderColor: '#616166', width: 25, height: 25, borderRadius: 50, backgroundColor: backgroundColor ? '#05ff2f' : 'rgba(0, 0, 0, 0)', justifyContent: "center", alignItems: 'center', }}>
-                            {
-                                messageArr.includes(messageId) && <Ionicons name='ios-checkmark' style={{ fontSize: 15 }} />
-                            }
-                        </View>
-                    </View>}
+                    </View>
+                </View>}
+                <Animated.View {...noSwip} style={{ flexGrow: 1, transform: [{ translateX: messageSwip.x }], }}>
                     <View style={{ flexGrow: 1, paddingHorizontal: 15, flexDirection: 'row', justifyContent: justifyContent, }}>
-                        <View {...noSwip} style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
+                        <View style={{ backgroundColor: '#0e274d', marginVertical: 2, borderRadius: 7, paddingHorizontal: 10, }}>
                             <>
                                 {
                                     !!pintMessage.text &&
@@ -137,9 +134,9 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
                             </View>
                         </View>
                     </View>
-                </>
-            </TouchableHighlight>
-        </Animated.View >
+                </Animated.View>
+            </>
+        </TouchableHighlight>
 
     )
 }

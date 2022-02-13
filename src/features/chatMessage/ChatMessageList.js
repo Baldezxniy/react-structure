@@ -17,22 +17,7 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
     }, [])
     const messageState = useSelector(getMessage)
     const loading = useSelector(getLoading)
-    const [isAutoScroll, setIsAutoScroll] = useState(false)
-    const ref = useRef()
 
-    // const onScrollHandle = (e) => {
-    //     debugger
-    //     const element = e.currentTarget;
-    //     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-    //         !isAutoScroll && setIsAutoScroll(true)
-    //     } else {
-    //         setIsAutoScroll(false)
-    //     }
-    // }
-
-    // // useEffect(()=>{
-    // //     ref.current.scrollIntoView()
-    // // },[])
     return (
 
 
@@ -62,9 +47,6 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                                                     />
                                                 })
                                             }
-                                            <View ref={ref}>
-
-                                            </View>
                                         </View >
                                     </ScrollView>}
                                     {
@@ -83,16 +65,6 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                 </>
 
             </ImageBackground >
-            {/* <>
-                {
-                    showMenu &&
-                    <View style={{ position: 'absolute', top: positionY - 50, left: positionX ? 60 : 0, zIndex: 100, height: 200, width: 170, backgroundColor: 'red', borderRadius: 15, }}>
-                        <Text>
-                            хуй
-                        </Text>
-                    </View>
-                }
-            </> */}
         </>
 
 
