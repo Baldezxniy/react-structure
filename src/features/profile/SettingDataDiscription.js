@@ -13,7 +13,7 @@ const SettingDataDiscription = memo((props) => {
                 </Text>
                 :
                 <Text style={{ fontSize: 16 }}>
-                    О себе
+                    {t("setting.account.bio.bioTrue.text")}
                 </Text>
             }
         </View>

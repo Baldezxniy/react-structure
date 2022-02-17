@@ -1,27 +1,27 @@
 export const FOLDER_LIST_DATA = [
     {
         id: 1,
-        title: 'Чаты'
+        title: "search.folders.chats"
     },
     {
         id: 2,
-        title: 'Медиа'
+        title: "search.folders.media"
     },
     {
         id: 3,
-        title: 'Ссылки'
+        title: "search.folders.links"
     },
     {
         id: 4,
-        title: 'Файлы'
+        title: "search.folders.files"
     },
     {
         id: 5,
-        title: 'Музыка'
+        title: "search.folders.music"
     },
     {
         id: 6,
-        title: 'Голосовые'
+        title: "search.folders.voice"
     }
 
 ]

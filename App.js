@@ -3,6 +3,7 @@ import { RoutesApp } from './src/app/Routes.js';
 import React from 'react-native'
 import { Provider } from 'react-redux';
 import { store } from './src/app/store.js';
+import i18n from './i18n'
 
 
 export default () => {

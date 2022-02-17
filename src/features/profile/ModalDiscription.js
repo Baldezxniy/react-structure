@@ -7,8 +7,13 @@ import * as yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDiscription } from './profileSelector'
 import { editDiscriptionTC } from './profileSlice'
+import { useTranslation } from 'react-i18next';
+
+
+
 
 const ModalDiscription = memo(({ openEditDiscription, closeEditDiscriptionHandler }) => {
+    const { t } = useTranslation()
 
     const discription = useSelector(getDiscription)
 
@@ -16,7 +21,7 @@ const ModalDiscription = memo(({ openEditDiscription, closeEditDiscriptionHandle
 
     const validationsSchema = yup.object().shape({
         discription: yup.string()
-            .max(70, 'максимальная длина 70 символов')
+            .max(70, t("setting.modal.bio.errors.maxLength"))
     })
 
     const diapatch = useDispatch()
@@ -38,7 +43,7 @@ const ModalDiscription = memo(({ openEditDiscription, closeEditDiscriptionHandle
                 validationSchema={validationsSchema}
             >
 
-                {({ errors, handleChange, handleBlur, handleSubmit, values }) => (
+                {({ errors, handleChange, handleSubmit, values }) => (
                     <View style={modalStyle.container}>
                         <View style={modalStyle.header}>
                             <View style={modalStyle.header__arrow}>
@@ -50,7 +55,7 @@ const ModalDiscription = memo(({ openEditDiscription, closeEditDiscriptionHandle
                             </View>
                             <View style={modalStyle.header__param}>
                                 <Text style={{ fontSize: 18 }}>
-                                    О себе
+                                    {t("setting.modal.bio.title")}
                                 </Text>
                             </View>
                             <TouchableHighlight onPress={handleSubmit} style={modalStyle.header__button}>
@@ -67,12 +72,13 @@ const ModalDiscription = memo(({ openEditDiscription, closeEditDiscriptionHandle
                                     onChangeText={handleChange('discription')}
                                     onFocus={() => setIsFocus(true)}
                                     onBlur={() => setIsFocus(false)}
-                                    placeholder='О себе' />
+                                    placeholder={t("setting.modal.bio.placeholder")} />
                             </View>
-                            {errors.discription && <View style={{ marginBottom: 10 }}><Text style={{ color: 'red', fontSize: 17 }}>{errors.discription}</Text></View>}
+                            {errors.discription && <View style={{ marginBottom: 10 }}>
+                                <Text style={{ color: 'red', fontSize: 17 }}>{errors.discription}</Text></View>}
                             <View >
                                 <Text style={{ color: 'rgba(0, 0, 0, 0.3)', fontSize: 17 }}>
-                                    Вы можете добавить несколько строк о себе. Они будут видны кто откроет Ваш профиль.
+                                    {t("setting.modal.bio.text")}
                                 </Text>
                             </View>
                         </View>

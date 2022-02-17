@@ -3,8 +3,10 @@ import { Switch, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
 import { userStyle } from "../../styles/userStyles";
 import { setNotificationTC } from "./userProfileListInfoSlice";
+import { useTranslation } from 'react-i18next';
 
 const UserProfileNotification = memo(({ notification }) => {
+    const { t } = useTranslation();
 
     const dispatch = useDispatch()
 
@@ -17,12 +19,12 @@ const UserProfileNotification = memo(({ notification }) => {
                 <View style={{ flexGrow: 1 }}>
                     <View>
                         <Text>
-                            Уведомления
+                            {t("userProfile.info.notification.title")}
                         </Text>
                     </View>
                     <View>
                         <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 13, marginTop: 5 }}>
-                            {notification ? 'Включены' : 'Отключены'}
+                            {notification ? t("userProfile.info.notification.on") : t("userProfile.info.notification.off")}
                         </Text>
                     </View>
                 </View>

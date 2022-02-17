@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import { settingStyle } from "../styles/settingStyle";
 
-const SettingRenderItem = memo(({ iconName, Icon, title, modal, id, border }) => {
+const SettingRenderItem = memo(({ t, iconName, Icon, title, setModal, id, border }) => {
 
     const containerBorderBottomWidth = id === 7 ? 15 : 0
     const borderBottomWidth = border ? 0.7 : 0
@@ -10,7 +10,15 @@ const SettingRenderItem = memo(({ iconName, Icon, title, modal, id, border }) =>
 
     return (
         <>
-            <TouchableHighlight underlayColor='#000' onPress={() => (modal)} style={[settingStyle.setting__item]}>
+            {
+                id === 8 &&
+                <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+                    <Text style={{ color: '#4169E1', fontSize: 14, fontWeight: '700' }}>
+                        {t("setting.help.title")}
+                    </Text>
+                </View>
+            }
+            <TouchableHighlight underlayColor='#000' onPress={() => setModal(true)} style={[settingStyle.setting__item]}>
                 <>
                     <View style={{ marginRight: 30 }}>
                         <Text>
@@ -19,14 +27,12 @@ const SettingRenderItem = memo(({ iconName, Icon, title, modal, id, border }) =>
                     </View>
                     <View style={[settingStyle.setting__text__box, { borderBottomWidth: borderBottomWidth }]}>
                         <Text>
-                            {title}
+                            {t(title)}
                         </Text>
                     </View>
                 </>
             </TouchableHighlight>
-            <View style={{ borderBottomWidth: containerBorderBottomWidth, borderColor: 'rgba(0, 0, 0, 0.4)' }}>
-
-            </View>
+            <View style={{ borderBottomWidth: containerBorderBottomWidth, borderColor: 'rgba(0, 0, 0, 0.4)' }} />
         </>
     )
 })

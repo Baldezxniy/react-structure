@@ -7,10 +7,12 @@ import { useMessage } from "../../apiHook/useMessage";
 import ChatMessage from "./ChatMessage";
 import { getLoading, getMessage } from "./chatMessageSelector";
 import { getMessageTC } from "./chatMessageSlice";
+import { useTranslation } from 'react-i18next';
 
 const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingMessageArr, setPintMessage }) => {
     const dispatch = useDispatch()
     const messages = useMessage()
+    const { t } = useTranslation();
 
     useEffect(() => {
         dispatch(getMessageTC(messages))
@@ -29,31 +31,29 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                         loading ?
                             <View style={{
                                 justifyContent: messageState.length !== 0 ? 'flex-end' : 'center',
-                                position: "absolute", height: 'auto', top: 0, bottom: 0, left: 0, right: 0, maxHeight: '100%', zIndex: 1
+                                position: "absolute", height: 'auto', top: 0, bottom: 0, left: 0, right: 0, maxHeight: '100%', zIndex: 999
                             }}>
                                 <View >
                                     {messageState.length !== 0 && <ScrollView contentContainerStyle={{ justifyContent: 'flex-end', paddingBottom: 5 }} >
-                                        <View  >
 
-                                            {
-                                                [...messageState].map((message) => {
+                                        {
+                                            [...messageState].map((message) => {
 
-                                                    return <ChatMessage check={message.check} setPintMessage={setPintMessage}
-                                                        messageId={message.messageId} pintMessage={message.pintMessage}
-                                                        zeroingMessageArr={zeroingMessageArr} setChatMode={setChatMode}
-                                                        messageArr={messageArr} setMessageArr={setMessageArr} key={message.messageId}
-                                                        userId={message.userId} text={message.text} changed={message.changed} time={message.time}
-                                                        firstName={message.firstName} lastName={message.lastName}
-                                                    />
-                                                })
-                                            }
-                                        </View >
+                                                return <ChatMessage t={t} check={message.check} setPintMessage={setPintMessage}
+                                                    messageId={message.messageId} pintMessage={message.pintMessage}
+                                                    zeroingMessageArr={zeroingMessageArr} setChatMode={setChatMode}
+                                                    messageArr={messageArr} setMessageArr={setMessageArr} key={message.messageId}
+                                                    userId={message.userId} text={message.text} changed={message.changed} time={message.time}
+                                                    firstName={message.firstName} lastName={message.lastName}
+                                                />
+                                            })
+                                        }
                                     </ScrollView>}
                                     {
                                         messageState.length === 0 &&
                                         <View style={{ alignItems: "center" }}>
-                                            <Text>
-                                                Напиши привет этому далбаебу
+                                            <Text style={{ fontSize: 20, backgroundColor: 'rgba(96, 101, 204, 0.6)', borderRadius:20, paddingHorizontal:15,paddingVertical:5 }}>
+                                                {t("chat.startChat")}
                                             </Text>
                                         </View>
                                     }

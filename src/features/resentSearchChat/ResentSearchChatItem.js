@@ -19,17 +19,14 @@ const ResentSearchChatItem = ({ avatar, chatId, firstName, lastName, online, use
             <ModalClearChat clearMode='clearChat' clearModal={clearModal} chatId={chatId} firstName={firstName} lastName={lastName} closeModal={closeModal} />
             <TouchableHighlight
                 onLongPress={openModal}
-                delayLongPress={100}
+                delayLongPress={500}
                 onPress={() => navigate('/chat')}
                 to='/chat' style={SearchStyles.list__item__chat}>
                 <>
                     <ResentSearchItemChatAvatar avatar={avatar} />
-                    <View style={{ marginLeft: 13, flexGrow: 1 }}>
+                    <View style={{ marginLeft: 13, flexGrow: 1, borderBottomWidth:0.7 }}>
                         <ResentSearchItemChatName firstName={firstName} lastName={lastName} />
                         <ResentSearchItemChatOnline online={online} />
-                        <View style={{ borderStyle: 'solid', borderWidth: 0.7, borderColor: 'rgba(0, 0, 0, 0.2)' }}>
-
-                        </View>
                     </View>
                 </>
             </TouchableHighlight>

@@ -4,8 +4,10 @@ import { Modal, Text, TouchableHighlight, View, TouchableOpacity } from "react-n
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
 import { DeleteMessageBtn } from "../features/chatMessage/DeleteMessageBtn";
 import { DeletePhotoBtn } from "../features/userProfileContent/DeletePhotoBtn";
+import { useTranslation } from 'react-i18next';
 
-const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMessageArr, deleteMode, photoArr, setPhotoArr }) => {
+const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMessageArr, deleteMode, setMessageArr }) => {
+    const { t } = useTranslation();
 
     const deleteButton = () => {
         switch (deleteMode) {
@@ -15,12 +17,14 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
                 )
             } case 'content': {
                 return (
-                    <DeletePhotoBtn photoArr={photoArr} check={check} setPhotoArr={setPhotoArr} />
+                    <DeletePhotoBtn messageArr={messageArr} check={check} setMessageArr={setMessageArr} />
                 )
             }
         }
     }
     const [check, setCheck] = useState(false)
+
+    const name = `${userName.firstName}${userName.lastName ? userName.lastName : ''}` ? `${userName.firstName}${userName.lastName ? userName.lastName : ''}` : null
     return (
         <Modal
             transparent={true}
@@ -35,19 +39,27 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
 
                             <View style={{ justifyContent: 'center' }}>
                                 <Text style={{ fontWeight: '700', fontSize: 19 }}>
-                                    Удалить сообщения
+                                    {messageArr.length === 1 ?
+
+
+                                        t('modalDeleteMessage.title', { context: 'One' })
+                                        :
+                                        t('modalDeleteMessage.title', { context: `Other`, count: messageArr.length })
+
+
+                                    }
+
                                 </Text>
                             </View>
                         </View>
                         <View style={{ marginTop: 20 }}>
 
                             <Text style={{ fontSize: 14.5 }}>
-
                                 {
-                                    !!messageArr && `Вы точно хотите удалить ${messageArr.length === 1 ? 'это собщения' : "эти сообщения"} ?`
-                                }
-                                {
-                                    !!photoArr && `Вы точно хотите удалить ${photoArr.length === 1 ? 'это собщения' : "эти сообщения"} ?`
+                                    messageArr.length === 1 ?
+                                        t("modalDeleteMessage.text", { context: 'One' })
+                                        :
+                                        t("modalDeleteMessage.text", { context: 'Other' })
                                 }
                             </Text>
                         </View>
@@ -63,7 +75,7 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
                             </View>
                             <View>
                                 <Text>
-                                    Тажке удалить для {`${userName.firstName}${userName.lastName ? userName.lastName : ''}`}
+                                    {t("modalDeleteMessage.checkBox", { name })}
                                 </Text>
                             </View>
                         </View>
@@ -71,7 +83,7 @@ const ModalDelete = memo(({ userName, modal, closeModal, messageArr, zeroingMess
                             <View style={{ marginRight: 10 }}>
                                 <TouchableOpacity onPress={closeModal} style={{ borderRadius: 5, borderColor: '#288afa', borderWidth: 0.5, padding: 5 }}>
                                     <Text style={{ color: '#288afa' }}>
-                                        ОТМЕНА
+                                        {t("modalDeleteMessage.button1")}
                                     </Text>
                                 </TouchableOpacity>
                             </View>

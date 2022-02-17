@@ -3,14 +3,14 @@ import { FontAwesome5, Ionicons, Feather, EvilIcons } from 'react-native-vector-
 export const menuDataList = [
     {
         id: 1,
-        title: 'Создать группу',
+        title: "main.menu.group",
         Icon: FontAwesome5,
         iconName: 'user-friends',
         path: '/'
     },
     {
         id: 2,
-        title: 'Контакты',
+        title: "main.menu.contacts",
         Icon: FontAwesome5,
         iconName: 'user',
         path: '/'
@@ -18,7 +18,7 @@ export const menuDataList = [
     },
     {
         id: 3,
-        title: 'Звонки',
+        title: "main.menu.calls",
         Icon: Ionicons,
         iconName: 'ios-call-outline',
         path: '/'
@@ -26,7 +26,7 @@ export const menuDataList = [
     },
     {
         id: 4,
-        title: 'Люди рядом',
+        title: "main.menu.peopleNearby",
         Icon: FontAwesome5,
         iconName: 'user',
         path: '/'
@@ -34,7 +34,7 @@ export const menuDataList = [
     },
     {
         id: 5,
-        title: 'Избранное',
+        title: "main.menu.savedMessages",
         Icon: Feather,
         iconName: 'bookmark',
         path: '/'
@@ -42,21 +42,21 @@ export const menuDataList = [
     },
     {
         id: 6,
-        title: 'Настройки',
+        title: "main.menu.settings",
         Icon: Ionicons,
         iconName: 'ios-settings-outline',
         path: '/setting'
     },
     {
         id: 7,
-        title: 'Добавить друзей',
+        title: "main.menu.inviteFriends",
         Icon: Feather,
         iconName: 'user-plus',
         path: '/',
     },
     {
         id: 8,
-        title: 'Возможности Telegram',
+        title: "main.menu.telegramFeatures",
         Icon: EvilIcons,
         iconName: 'question',
         path: '/'

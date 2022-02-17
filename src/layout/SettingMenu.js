@@ -2,9 +2,11 @@ import { memo } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import { FontAwesome5, Ionicons } from 'react-native-vector-icons'
 import { settingStyle } from "../styles/settingStyle";
+import { useTranslation } from 'react-i18next';
 
 
 export const SettingMenu = memo(({ openMenu, closeMenuHandler, openEditNameHeandler }) => {
+    const { t } = useTranslation();
 
 
     const openEditName = () => {
@@ -23,7 +25,7 @@ export const SettingMenu = memo(({ openMenu, closeMenuHandler, openEditNameHeand
                                 </View>
                                 <View>
                                     <Text style={{ color: '#fff', fontSize: 17 }}>
-                                        Изменить имя
+                                        {t("setting.menu.editName")}
                                     </Text>
                                 </View>
                             </>
@@ -35,7 +37,7 @@ export const SettingMenu = memo(({ openMenu, closeMenuHandler, openEditNameHeand
                                 </View>
                                 <View>
                                     <Text style={{ color: '#fff', fontSize: 17 }}>
-                                        Выбрать фотографию
+                                        {t("setting.menu.newPhoto")}
                                     </Text>
                                 </View>
                             </>
@@ -47,7 +49,7 @@ export const SettingMenu = memo(({ openMenu, closeMenuHandler, openEditNameHeand
                                 </View>
                                 <View>
                                     <Text style={{ color: '#fff', fontSize: 17 }}>
-                                        Выход
+                                        {t("setting.menu.logOut")}
                                     </Text>
                                 </View>
                             </>

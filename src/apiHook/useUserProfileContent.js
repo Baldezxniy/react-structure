@@ -16,39 +16,39 @@ export const useUserProfileFolder = () => {
     return [
         {
             folderId: 1,
-            title: 'Медиа',
+            title: 'userProfile.folders.media',
             content: true,
         },
-        // {
-        //     id: 2,
-        //     title: 'Файлы',
-        //     content: 'null'
-        // },
-        // {
-        //     id: 3,
-        //     title: 'Ссылки',
-        //     content: 'null'
-        // },
-        // {
-        //     id: 4,
-        //     title: 'Музыка',
-        //     content: 'null'
-        // },
-        // {
-        //     id: 5,
-        //     title: 'Голосовые',
-        //     content: 'null'
-        // },
-        // {
-        //     id: 6,
-        //     title: 'GIF',
-        //     content: null
-        // },
-        // {
-        //     id: 7,
-        //     title: 'Группы',
-        //     content: null
-        // },
+        {
+            id: 2,
+            title: 'userProfile.folders.files',
+            content: 'null'
+        },
+        {
+            id: 3,
+            title: 'userProfile.folders.links',
+            content: 'null'
+        },
+        {
+            id: 4,
+            title: 'userProfile.folders.music',
+            content: 'null'
+        },
+        {
+            id: 5,
+            title: 'userProfile.folders.voice',
+            content: 'null'
+        },
+        {
+            id: 6,
+            title: 'userProfile.folders.gif',
+            content: 'null'
+        },
+        {
+            id: 7,
+            title: 'userProfile.folders.groups',
+            content: 'null'
+        },
 
     ]
 }

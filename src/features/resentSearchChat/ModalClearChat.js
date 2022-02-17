@@ -1,6 +1,7 @@
 import { Modal, Text, TouchableHighlight, TouchableOpacity, View } from "react-native"
 import { useDispatch } from "react-redux"
 import { clearFullHistoryTC, clearHistoryChatTC } from "./resentSearchChatSlice"
+import { useTranslation } from 'react-i18next';
 
 
 const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, closeModal }) => {
@@ -12,18 +13,24 @@ const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, cl
     const clearFullHandle = () => {
         dispatch(clearFullHistoryTC())
     }
+    const { t } = useTranslation()
+
+
+
+    const name = `${firstName}${lastName ? ` ${lastName}` : ''}`
+
     const clearTitle = () => {
         switch (clearMode) {
             case 'clearChat': {
                 return (
                     <Text style={{ fontWeight: '700', fontSize: 19 }}>
-                        История поиска
+                        {t("search.modal.searhHistory.title")}
                     </Text>
                 )
             } case 'clearFullChats': {
                 return (
                     <Text style={{ fontWeight: '700', fontSize: 19 }}>
-                        Очистить историю поиска
+                        {t("search.modal.clearSearhHistory.title")}
                     </Text>
                 )
             }
@@ -34,13 +41,13 @@ const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, cl
             case 'clearChat': {
                 return (
                     <Text style={{ fontSize: 15.5 }}>
-                        Вы хотите удалить "{`${firstName}${lastName ? ` ${lastName}` : ''}`}" из истории поиска ?
+                        {t("search.modal.searhHistory.text", { name })}
                     </Text>
                 )
             } case 'clearFullChats': {
                 return (
                     <Text style={{ fontSize: 15.5 }}>
-                        Вы точно хотите очистить историю поиска?
+                        {t("search.modal.clearSearhHistory.text")}
                     </Text>
                 )
             }
@@ -52,7 +59,7 @@ const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, cl
                 return (
                     <TouchableOpacity onPress={clearHandle} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
                         <Text style={{ color: '#fa143e' }}>
-                            УБРАТЬ
+                            {t("search.modal.searhHistory.button2")}
                         </Text>
                     </TouchableOpacity>
                 )
@@ -60,7 +67,7 @@ const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, cl
                 return (
                     <TouchableOpacity onPress={clearFullHandle} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
                         <Text style={{ color: '#fa143e' }}>
-                            ОЧИСТИТЬ
+                            {t("search.modal.clearSearhHistory.button2")}
                         </Text>
                     </TouchableOpacity>
                 )
@@ -90,7 +97,7 @@ const ModalClearChat = ({ clearMode, chatId, firstName, lastName, clearModal, cl
                             <View style={{ marginRight: 10 }}>
                                 <TouchableOpacity onPress={closeModal} style={{ borderRadius: 5, borderColor: '#288afa', borderWidth: 0.5, padding: 5 }}>
                                     <Text style={{ color: '#288afa' }}>
-                                        ОТМЕНА
+                                        {t("search.modal.button1")}
                                     </Text>
                                 </TouchableOpacity>
                             </View>

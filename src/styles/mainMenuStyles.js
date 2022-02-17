@@ -18,7 +18,7 @@ export const stylesMainMenu = StyleSheet.create({
         paddingRight: 15,
         paddingLeft: 15,
         backgroundColor: '#354378',
-        height: 165,
+        height: 170,
         paddingTop: 35
     },
     menu__header: {

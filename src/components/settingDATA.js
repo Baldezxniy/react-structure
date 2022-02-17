@@ -3,7 +3,7 @@ import { Fontisto, Feather, MaterialCommunityIcons, MaterialIcons, Ionicons, Evi
 export const SETTING_DATA = [
     {
         id: 1,
-        title: 'Уведомления и звук',
+        title: "setting.settings.notification",
         Icon: Fontisto,
         iconName: 'bell',
         modal: null,
@@ -11,7 +11,7 @@ export const SETTING_DATA = [
     },
     {
         id: 2,
-        title: 'Конфиденциальность',
+        title: "setting.settings.private",
         Icon: Feather,
         iconName: 'lock',
         modal: null,
@@ -20,15 +20,15 @@ export const SETTING_DATA = [
     },
     {
         id: 3,
-        title: 'Данные и память',
+        title: "setting.settings.data",
         Icon: MaterialCommunityIcons,
         iconName: 'clock-time-three-outline',
-        modal: null,
+        modal: 'language',
         border: true
     },
     {
         id: 4,
-        title: 'Настройки чатов',
+        title: "setting.settings.chat",
         Icon: Ionicons,
         iconName: 'chatbubble-outline',
         modal: null,
@@ -36,14 +36,16 @@ export const SETTING_DATA = [
     },
     {
         id: 5,
-        title: 'Папки',
+        title: "setting.settings.folders",
         Icon: Feather,
         iconName: 'folder',
-        modal: null
+        modal: null,
+        border: true
+
     },
     {
         id: 6,
-        title: 'Устройства',
+        title: "setting.settings.devices",
         Icon: MaterialIcons,
         iconName: 'devices',
         modal: null,
@@ -52,16 +54,16 @@ export const SETTING_DATA = [
     },
     {
         id: 7,
-        title: 'Язык',
+        title: "setting.settings.language",
         Icon: MaterialIcons,
         iconName: 'language',
-        modal: null,
+        modal: 'language',
         border: false
 
     },
     {
         id: 8,
-        title: 'Задать вопрос',
+        title: "setting.help.ask",
         Icon: Ionicons,
         iconName: 'chatbubble-ellipses-outline',
         modal: null,
@@ -70,7 +72,7 @@ export const SETTING_DATA = [
     },
     {
         id: 9,
-        title: 'Вопрос о Telegram',
+        title: "setting.help.telegram",
         Icon: EvilIcons,
         iconName: 'question',
         modal: null,
@@ -78,7 +80,7 @@ export const SETTING_DATA = [
     },
     {
         id: 10,
-        title: 'Политика конфиденциальности',
+        title: "setting.help.private",
         Icon: MaterialCommunityIcons,
         iconName: 'shield-check-outline',
         modal: null,

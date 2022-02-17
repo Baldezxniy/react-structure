@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const modalStyle = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#28282b'
+        backgroundColor: '#24194f'
     },
     header: {
         alignItems: 'center',

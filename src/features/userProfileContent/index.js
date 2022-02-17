@@ -24,19 +24,19 @@ const UserProfileContent = ({ userName }) => {
     const foldersState = useSelector(getFolders)
     const loading = useSelector(getLoading)
 
-    const [photoArr, setPhotoArr] = useState([])
+    const [messageArr, setMessageArr] = useState([])
     return (
         <>
             {
                 loading ?
                     <>
-                        <FolderList userName={userName} folders={foldersState} photoArr={photoArr} setPhotoArr={setPhotoArr} />
+                        <FolderList userName={userName} folders={foldersState} messageArr={messageArr} setMessageArr={setMessageArr} />
                         {
                             isGame
                                 ? <Music />
                                 :
                                 <></>}
-                        <UserProfileImgList content={contentState} setPhotoArr={setPhotoArr} photoArr={photoArr} />
+                        <UserProfileImgList content={contentState} setMessageArr={setMessageArr} messageArr={messageArr} />
                     </>
                     :
                     <></>

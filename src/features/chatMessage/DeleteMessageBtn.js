@@ -1,9 +1,10 @@
 import { Text, TouchableOpacity } from "react-native"
 import { useDispatch } from "react-redux"
 import { deleteMessageTC } from "./chatMessageSlice"
+import { useTranslation } from 'react-i18next';
 
 export const DeleteMessageBtn = ({ zeroingMessageArr, messageArr }) => {
-
+    const {t} = useTranslation()
     const dispatch = useDispatch()
 
     const handleDeleteMessage = () => {
@@ -14,7 +15,7 @@ export const DeleteMessageBtn = ({ zeroingMessageArr, messageArr }) => {
     return (
         <TouchableOpacity onPress={handleDeleteMessage} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
             <Text style={{ color: '#fa143e' }}>
-                УДАЛИТЬ
+                {t('modalDeleteMessage.button2')}
             </Text>
         </TouchableOpacity>
     )

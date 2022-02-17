@@ -11,16 +11,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActivityIndicator, View } from "react-native";
 import { initializationSucses } from "./appSlice.js";
 import { useMyData } from "../apiHook/useMyData.js";
+import { useI18n } from "../apiHook/useI18n.js";
+import { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
+
 
 export const RoutesApp = (props) => {
-	const profile = useMyData()
-	const dispatch = useDispatch()
-	const initialzationApp = () => {
-		dispatch(initializationSucses(profile))
-	}
-	setTimeout(initialzationApp, 2000)
 
+	const profile = useMyData()
+	const i18nHook = useI18n()
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(initializationSucses({ profile, i18nHook }))
+	}, [])
 	const initialization = useSelector(state => state.app.initialization)
+	const { i18n } = useTranslation()
+	const activeLanguage = useSelector(state => state.app.i18n)
+
+	useEffect(() => {
+		i18n.changeLanguage(activeLanguage)
+	}, [initialization, activeLanguage])
 
 	return (
 		<>

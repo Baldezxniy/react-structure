@@ -3,22 +3,25 @@ import { FlatList, Text, TouchableOpacity, View } from "react-native"
 import { ScrollView } from "react-native"
 import { FOLDER_LIST_DATA } from "./folderListData"
 import { SearchStyles } from "../styles/SearchStyles"
+import { useTranslation } from 'react-i18next';
 
 
-const RenderItem = ({ title, color, borderBottomWidth, onPress }) => (
-    <TouchableOpacity onPress={onPress} style={[SearchStyles.folders__item,]}>
-        <>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={[SearchStyles.folders__item__text, color]}>
-                    {title}
-                </Text>
-            </View>
-            <View style={[{ borderBottomWidth: borderBottomWidth }, SearchStyles.active__folders__item]}>
+const RenderItem = ({ title, color, borderBottomWidth, onPress }) => {
+    const { t } = useTranslation()
 
-            </View>
-        </>
-    </TouchableOpacity>
-)
+    return (
+        <TouchableOpacity onPress={onPress} style={[SearchStyles.folders__item,]}>
+            <>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={[SearchStyles.folders__item__text, color]}>
+                        {t(title)}
+                    </Text>
+                </View>
+                <View style={[{ borderBottomWidth: borderBottomWidth }, SearchStyles.active__folders__item]} />
+            </>
+        </TouchableOpacity>
+    )
+}
 
 const SearchFolderList = () => {
 

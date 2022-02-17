@@ -7,6 +7,7 @@ import { getDiscription, getTelephone, getUserName } from "./profileSelector";
 import SettingDataDiscription from "./SettingDataDiscription";
 import SettingDataPhone from "./SettingDataPhone";
 import SettingDataUserName from "./SettingDataUserName";
+import { useTranslation } from 'react-i18next';
 
 const SettingDataList = memo(({ openEditUserNameHeandler, openEditDiscriptionHeandler }) => {
 
@@ -15,6 +16,7 @@ const SettingDataList = memo(({ openEditUserNameHeandler, openEditDiscriptionHea
     const telephone = useSelector(getTelephone)
     const userName = useSelector(getUserName)
     const discription = useSelector(getDiscription)
+    const { t } = useTranslation();
 
     return (
         <View style={settingStyle.data__container}>
@@ -24,12 +26,12 @@ const SettingDataList = memo(({ openEditUserNameHeandler, openEditDiscriptionHea
             <View >
                 <View style={{ marginLeft: 20, paddingTop: 10 }}>
                     <Text style={{ color: '#4169E1', fontSize: 14, fontWeight: '700' }}>
-                        Аккаунт
+                        {t("setting.account.account")}
                     </Text>
                 </View>
                 <View>
                     <TouchableHighlight
-                        delayLongPress={100}
+                        delayLongPress={700}
                         onLongPress={() => {
                             setOpenCopy(true)
                             setTextCopy(telephone)
@@ -39,32 +41,35 @@ const SettingDataList = memo(({ openEditUserNameHeandler, openEditDiscriptionHea
                             <SettingDataPhone />
                             <View>
                                 <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 12, marginTop: 5 }}>
-                                    Нажмите чтобы изменить номер
+                                    {t("setting.account.telephone")}
                                 </Text>
                             </View>
                         </View>
                     </TouchableHighlight>
                     <TouchableHighlight
-                        delayLongPress={100}
+                        onPress={openEditUserNameHeandler}
+                        style={{ flexGrow: 1 }}
+                        delayLongPress={700}
                         onLongPress={() => {
                             setOpenCopy(true)
                             setTextCopy(userName)
                         }}
-                        onPress={openEditUserNameHeandler}
                     >
                         <View style={settingStyle.data__item}>
                             <SettingDataUserName />
                             <View>
                                 <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 12, marginTop: 5 }}>
-                                    Имя пользователя
+                                {t("setting.account.userName.userName")}
                                 </Text>
                             </View>
                         </View>
                     </TouchableHighlight>
 
                     <TouchableHighlight
-                        delayLongPress={100}
                         onPress={openEditDiscriptionHeandler}
+                        style={{ flexGrow: 1 }}
+
+                        delayLongPress={700}
                         onLongPress={() => {
                             setOpenCopy(true)
                             setTextCopy(discription)
@@ -77,11 +82,11 @@ const SettingDataList = memo(({ openEditUserNameHeandler, openEditDiscriptionHea
                             <View>
                                 {discription ?
                                     <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 13, marginTop: 5 }}>
-                                        О себе
+                                        {t("setting.account.bio.bioFalse.title")}
                                     </Text>
                                     :
                                     <Text style={{ color: 'rgba(0, 0, 0, 0.5)', fontSize: 13, marginTop: 5 }}>
-                                        Напишите немного о себе
+                                        {t("setting.account.bio.bioFalse.text")}
                                     </Text>
                                 }
                             </View>

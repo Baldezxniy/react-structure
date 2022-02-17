@@ -1,14 +1,18 @@
 import { View, Text, StyleSheet, Modal, Pressable, Clipboard, TouchableHighlight } from 'react-native'
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 export const ModalCopy = ({ openCopy, setOpenCopy, textCopy, setTextCopy }) => {
+
+    const { t } = useTranslation();
+
     return (
-        <Modal 
+        <Modal
             transparent={true}
             visible={openCopy}
 
         >
-            <TouchableHighlight underlayColor='none' onPressOut={() => { setOpenCopy(false); setTextCopy('') }} style={stylesCopy.modal__container}>
+            <TouchableHighlight underlayColor='none' onPressIn={() => { setOpenCopy(false); setTextCopy('') }} style={stylesCopy.modal__container}>
 
                 <View style={stylesCopy.copy__block}>
                     <Pressable style={{ width: '100%', height: '100%', justifyContent: 'center', paddingLeft: 20 }}
@@ -20,7 +24,7 @@ export const ModalCopy = ({ openCopy, setOpenCopy, textCopy, setTextCopy }) => {
                         }
                     >
                         <Text style={{ fontSize: 16 }}>
-                            Копировать
+                            {t("modalCopy")}
                         </Text>
                     </Pressable>
                 </View>

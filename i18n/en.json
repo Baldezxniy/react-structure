@@ -1,0 +1,190 @@
+{
+    "translation": {
+        "main": {
+            "folders": "All",
+            "menu": {
+                "group": "New Group",
+                "contacts": "Contacts",
+                "calls": "Calls",
+                "peopleNearby": "People Nearby",
+                "savedMessages": "Saved Messges",
+                "settings": "Settings",
+                "inviteFriends": "Invite Friends",
+                "telegramFeatures": "Telegram Features"
+            },
+            "modal": {
+                "button1": "CANCEL",
+                "deleteChat": {
+                    "title": "Delete chat",
+                    "text": "Are you sure you want to delete the chat with {{name}}?",
+                    "checkBox": "Also delete for {{name}}",
+                    "button2": "DELETE CHAT"
+                },
+                "deleteChats": {
+                    "title": "Delete {{count}} chats",
+                    "text": "Are you sure you want to delete selected chats?",
+                    "button2": "DELETE"
+                }
+            }
+        },
+        "search": {
+            "inputPlaceholder": "Search",
+            "folders": {
+                "chats": "Chats",
+                "media": "Media",
+                "links": "Links",
+                "files": "Files",
+                "music": "Music",
+                "voice": "Voice"
+            },
+            "recent": {
+                "recent": "Recent",
+                "clear": "Clear"
+            },
+            "recentItem": {
+                "online": "online",
+                "recently": "last seen recently"
+            },
+            "modal": {
+                "button1": "CANCEL",
+                "removeSuggestion": {
+                    "title": "Remove Suggestion",
+                    "text": "Are you sure you want to remove {{name}} from suggestions?",
+                    "button2": "REMOVE"
+                },
+                "clearSearhHistory": {
+                    "title": "Clear search history",
+                    "text": "Are you sure you want to clear your search history?",
+                    "button2": "CLEAR"
+                },
+                "searhHistory": {
+                    "title": "Search history",
+                    "text": "Are you sure you want to remove your \"{{name}}\" from search history?",
+                    "button2": "REMOVE"
+                }
+            }
+        },
+        "setting": {
+            "online": {
+                "online": "online",
+                "recently": "last seen recently"
+            },
+            "menu": {
+                "editName": "Edit name",
+                "newPhoto": "Set new photo",
+                "logOut": "Log out"
+            },
+            "account": {
+                "account": "Account",
+                "telephone": "Tap to change phone number",
+                "userName": {
+                    "none": "None",
+                    "userName": "Username"
+                },
+                "bio": {
+                    "bioFalse": {
+                        "title": "Bio",
+                        "text": "Add a few words about yourself"
+                    },
+                    "bioTrue": {
+                        "text": "Bio"
+                    }
+                }
+            },
+            "settings": {
+                "title": "Settings",
+                "notification": "Notifications and Sounds",
+                "private": "Privacy and Security",
+                "data": "Data and Storage",
+                "chat": "Chat Settings",
+                "folders": "Folders",
+                "devices": "Devices",
+                "language": "Language"
+            },
+            "help": {
+                "title": "Help",
+                "ask": "Ask a Question",
+                "telegram": "Telegram FAQ",
+                "private": "Privacy Policy"
+            },
+            "modal": {
+                "editName": {
+                    "title": "Edit name",
+                    "placeholder": {
+                        "firstName": "First name (required)",
+                        "lastName": "Last name (optional)"
+                    }
+                },
+                "username": {
+                    "title": "Username",
+                    "placeholder": "Your Username",
+                    "text": {
+                        "first": "You can chooses a username on Telegram. If you do, people will be able to find you by this username and contact you without needing your phone number",
+                        "last": "You can use a-z, 0-9 and underscores. Minimum length is 5 characters"
+                    },
+                    "errors": {
+                        "minLength": "A username must have at least 5 characters",
+                        "maxLength": "The username must not exceed 20 characters",
+                        "invalid": "Sorry, this username is invalid"
+                    }
+                },
+                "bio": {
+                    "title": "Bio",
+                    "placeholder": "Bio",
+                    "text": "You can add a few lines about yourself. Anyone who opens your profile will see this text.",
+                    "errors": {
+                        "maxLength": "The username must not exceed 70 characters"
+                    }
+                },
+                "changeLanguage": {
+                    "title": "Language"
+                }
+            }
+        },
+        "chat": {
+            "online": {
+                "online": "online",
+                "recently": "last seen recently"
+            },
+            "startChat": "Write hello to a friend",
+            "placeholder": "Message",
+            "messageEdited": "edited"
+        },
+        "userProfile": {
+            "online": {
+                "online": "online",
+                "recently": "last seen recently"
+            },
+            "info": {
+                "mobile": "Mobile",
+                "title": "Info",
+                "bio": "Bio",
+                "username": "Username",
+                "notification": {
+                    "title": "Notification",
+                    "off": "Off",
+                    "on": "On"
+                }
+            },
+            "folders": {
+                "media": "Media",
+                "files": "Files",
+                "links": "Links",
+                "music": "Music",
+                "voice": "Voice",
+                "gif": "GIF",
+                "groups": "Groups"
+            }
+        },
+        "modalCopy": "Copy",
+        "modalDeleteMessage": {
+            "title_One": "Delete message",
+            "title_Other": "Delete messages",
+            "text_One": "Are you sure you want ti delete this message?",
+            "text_Other": "Are you sure you want ti delete this messages?",
+            "checkBox": "Also delete for {{name}}",
+            "button1": "CANCEL",
+            "button2": "DELETE"
+        }
+    }
+}

@@ -1,9 +1,11 @@
 import { Text, View } from "react-native";
 import { Link } from "react-router-native";
 import { stylesMainMenu } from "../styles/mainMenuStyles";
+import { useTranslation } from 'react-i18next';
+
 
 const MenuParamsItem = ({ Icon, iconName, title, path, id }) => {
-
+	const { t } = useTranslation()
 	const borderBottomWidth = id === 6 ? 1 : 0
 	return (
 		<Link to={path}>
@@ -14,7 +16,7 @@ const MenuParamsItem = ({ Icon, iconName, title, path, id }) => {
 					</View>
 					<View>
 						<Text style={{ fontSize: 14, fontWeight: '700' }}>
-							{title}
+							{t(title)}
 						</Text>
 					</View>
 				</View>

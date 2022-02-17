@@ -19,7 +19,7 @@ const Main = () => {
 			toValue: left,
 			duration: 500,
 			useNativeDriver: false
-		}).start(({ finished }) => {
+		}).start(() => {
 			setOpenMenu(finish)
 		});
 	}

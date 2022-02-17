@@ -7,7 +7,7 @@ import { Animated, PanResponder } from 'react-native'
 import { useRef } from 'react'
 
 
-const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
+const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
     firstName, lastName, setMessageArr, messageId, zeroingMessageArr, pintMessage, check, setPintMessage }) => {
 
 
@@ -124,7 +124,7 @@ const ChatMessage = ({ userId, text, changed, time, messageArr, setChatMode,
                             <View style={{ flexDirection: isMessage ? 'column' : 'row', maxWidth: 300 }}>
                                 <MeassageText text={text} isMessage={isMessage} />
                                 <View style={{ flexDirection: "row", alignItems: 'flex-end', justifyContent: isMessage ? "flex-end" : "flex-start", paddingBottom: 4 }}>
-                                    <MessageChange changed={changed} />
+                                    <MessageChange t={t} changed={changed} />
                                     <MessageTime time={time} marginRight={myId === userId ? 4 : 0} />
                                     {myId === userId && <View>
                                         {check ? <Ionicons name='ios-checkmark-done' style={{ fontSize: 17 }} /> :

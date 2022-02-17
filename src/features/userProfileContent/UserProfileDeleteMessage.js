@@ -4,13 +4,13 @@ import ModalDelete from "../../components/ModalDelete"
 import { Ionicons } from 'react-native-vector-icons'
 
 
-export const UserProfileDeleteMessage = ({ userName, photoArr, setPhotoArr }) => {
+export const UserProfileDeleteMessage = ({ userName, messageArr, setMessageArr }) => {
     const [modal, setModal] = useState(false)
     const openModal = () => { setModal(true) }
     const closeModal = () => { setModal(false) }
     return (
         <>
-            <ModalDelete deleteMode='content' photoArr={photoArr} userName={userName} modal={modal} closeModal={closeModal} setPhotoArr={setPhotoArr} />
+            <ModalDelete deleteMode='content' messageArr={messageArr} userName={userName} modal={modal} closeModal={closeModal} setMessageArr={setMessageArr} />
             <TouchableHighlight onPress={openModal}>
                 <Ionicons name='trash-outline' style={{ fontSize: 18 }} />
             </TouchableHighlight>

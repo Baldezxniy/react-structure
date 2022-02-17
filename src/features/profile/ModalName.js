@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getFirstName, getLastName } from './profileSelector'
 import { modalStyle } from '../../styles/modalStyle'
 import { editName } from './profileSlice'
+import { useTranslation } from 'react-i18next';
 
 const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
 
@@ -15,7 +16,7 @@ const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
     const [isFocusFirst, setIsFocusFirst] = useState(false)
     const [isFocusSecond, setIsFocusSecond] = useState(false)
 
-
+    const { t } = useTranslation()
 
     const dispatch = useDispatch()
 
@@ -34,7 +35,7 @@ const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
                     }
                 }}
             >
-                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                {({ handleChange, handleSubmit, values }) => (
                     <View style={modalStyle.container}>
 
                         <View style={modalStyle.header}>
@@ -47,7 +48,7 @@ const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
                             </View>
                             <View style={modalStyle.header__param}>
                                 <Text style={{ fontSize: 18 }}>
-                                    Изменить имя
+                                    {t("setting.modal.editName.title")}
                                 </Text>
                             </View>
                             <TouchableHighlight onPress={handleSubmit} style={modalStyle.header__button}>
@@ -62,7 +63,7 @@ const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
                                     onChangeText={handleChange('firstName')}
                                     onFocus={() => setIsFocusFirst(true)}
                                     onBlur={() => setIsFocusFirst(false)}
-                                    placeholder='Имя (обязательно)' />
+                                    placeholder={t("setting.modal.editName.placeholder.firstName")} />
                             </View>
                             <View>
                                 <TextInput
@@ -71,7 +72,7 @@ const ModalName = memo(({ closeEditNameHeandler, openEditName }) => {
                                     onChangeText={handleChange('lastName')}
                                     onFocus={() => setIsFocusSecond(true)}
                                     onBlur={() => setIsFocusSecond(false)}
-                                    placeholder='Фамилия (необязательно)' />
+                                    placeholder={t("setting.modal.editName.placeholder.lastName")} />
                             </View>
                         </View>
                     </View>

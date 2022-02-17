@@ -46,7 +46,7 @@ export const SearchStyles = StyleSheet.create({
 	list__item__chat: {
 		flexDirection: 'row',
 		paddingLeft: 15,
-		height: 60,
+		height: 50,
 
 	}
 })

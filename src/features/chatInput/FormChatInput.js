@@ -4,10 +4,12 @@ import { chatStyles } from "../../styles/chatStyles";
 import { MaterialCommunityIcons, SimpleLineIcons, AntDesign, Ionicons } from 'react-native-vector-icons'
 import { useDispatch } from "react-redux";
 import { addMessageTC } from "../chatMessage/chatMessageSlice";
+import { useTranslation } from 'react-i18next';
 
 
 const FormChatInput = ({ pintMessage, setPintMessage }) => {
 
+    const { t } = useTranslation();
 
     const dispatch = useDispatch()
 
@@ -62,16 +64,15 @@ const FormChatInput = ({ pintMessage, setPintMessage }) => {
                         <View style={{ justifyContent: 'center', flexGrow: 1, flexShrink: 1, flexBasis: 1 }}>
                             <TextInput
                                 autoFocus
-                                style={{ height: 'auto', fontSize: 16 }}
+                                style={{ height: 'auto', fontSize: 22 }}
                                 multiline={true}
-                                placeholder='Сообщение'
+                                placeholder={t("chat.placeholder")}
                                 contenteditable={true}
                                 onChangeText={e => {
                                     if (e !== " ") {
                                         handleChange('text')(e)
                                     }
                                 }}
-                                onBlur={handleBlur('text')}
                                 value={values.text}
                             />
                         </View>

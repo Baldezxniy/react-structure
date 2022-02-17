@@ -3,6 +3,7 @@ import { Image, Modal, Text, TouchableHighlight, TouchableOpacity, View } from "
 import { useDispatch } from "react-redux";
 import { deleteChatTC } from "./chatListSlice";
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
+import { useTranslation } from 'react-i18next';
 
 
 const ModalDelete = ({ chatDelete, closeDelete, selectArr, clearSelect, userDeleteChat }) => {
@@ -12,15 +13,20 @@ const ModalDelete = ({ chatDelete, closeDelete, selectArr, clearSelect, userDele
     const handleDelete = () => {
         clearSelect()
         dispatch(deleteChatTC({ selectArr }))
+        closeDelete()
     }
     const [check, setCheck] = useState(false)
-    
 
+
+    const { t } = useTranslation()
 
     const handleDeleteClose = () => {
         closeDelete()
         setCheck(false)
     }
+
+    const name = userDeleteChat.length >= 1 ? `${userDeleteChat[0].firstName}${userDeleteChat[0].lastName ? ' ' + userDeleteChat[0].lastName : ''}` : null
+
     return (
         <Modal
             transparent={true}
@@ -38,16 +44,22 @@ const ModalDelete = ({ chatDelete, closeDelete, selectArr, clearSelect, userDele
                             </View>}
                             <View style={{ justifyContent: 'center' }}>
                                 <Text style={{ fontWeight: '700', fontSize: 19 }}>
-                                    Удалить {selectArr.length} {selectArr.length === 1 ? 'чат' : "чата"}
+                                    {
+                                        selectArr.length !== 1 ?
+                                            t("main.modal.deleteChats.title", { count: selectArr.length })
+                                            : t("main.modal.deleteChat.title")
+                                    }
                                 </Text>
                             </View>
                         </View>
                         <View style={{ marginTop: 20 }}>
-                            {selectArr.length === 1 ? <Text style={{ fontSize: 15.5 }}>
-                                Вы точно хотите удалить чат с <Text style={{ fontWeight: '700' }}>{`${userDeleteChat[0].firstName}${userDeleteChat[0].lastName ? ' ' + userDeleteChat[0].lastName : ''}`}</Text> ?
-                            </Text> :
+                            {selectArr.length === 1 ?
+
                                 <Text style={{ fontSize: 15.5 }}>
-                                    Вы точно хотите удалить выбраные чаты ?
+                                    {t("main.modal.deleteChat.text", { name })}
+                                </Text> :
+                                <Text style={{ fontSize: 15.5 }}>
+                                    {t("main.modal.deleteChats.text")}
                                 </Text>}
                         </View>
                         {selectArr.length === 1 && <TouchableHighlight underlayColor='none' onPress={() => setCheck(!check)} style={{ flexDirection: "row", marginTop: 20 }}>
@@ -59,7 +71,7 @@ const ModalDelete = ({ chatDelete, closeDelete, selectArr, clearSelect, userDele
                                 </View>
                                 <View>
                                     <Text>
-                                        Также для {`${userDeleteChat[0].firstName} ${userDeleteChat[0].lastName}`}
+                                        {t("main.modal.deleteChat.checkBox", { name })}
                                     </Text>
                                 </View>
                             </>
@@ -68,14 +80,19 @@ const ModalDelete = ({ chatDelete, closeDelete, selectArr, clearSelect, userDele
                             <View style={{ marginRight: 10 }}>
                                 <TouchableOpacity onPress={handleDeleteClose} style={{ borderRadius: 5, borderColor: '#288afa', borderWidth: 0.5, padding: 5 }}>
                                     <Text style={{ color: '#288afa' }}>
-                                        ОТМЕНА
+                                        {t("main.modal.button1")}
                                     </Text>
                                 </TouchableOpacity>
                             </View>
                             <View>
                                 <TouchableOpacity onPress={handleDelete} style={{ borderRadius: 5, borderColor: '#fa143e', borderWidth: 0.5, padding: 5 }}>
                                     <Text style={{ color: '#fa143e' }}>
-                                        УДАЛИТЬ
+                                        {
+                                            selectArr.length === 1 ?
+                                                t("main.modal.deleteChat.button2")
+                                                :
+                                                t("main.modal.deleteChats.button2")
+                                        }
                                     </Text>
                                 </TouchableOpacity>
                             </View>
