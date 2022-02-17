@@ -5,6 +5,8 @@ import { Ionicons } from 'react-native-vector-icons'
 import { useSelector, useDispatch } from "react-redux"
 import { getI18nTC } from "../../app/appSlice"
 import { useTranslation } from 'react-i18next';
+import { TextInput } from "react-native"
+import { useState } from "react"
 
 export const ModalLanguage = ({ lngModal, setLngModal }) => {
     ;
@@ -30,7 +32,63 @@ export const ModalLanguage = ({ lngModal, setLngModal }) => {
         setLngModal(false)
     }
     const activeLanguage = useSelector(state => state.app.i18n)
-  
+    const [headerMode, setHeaderMode] = useState('default')
+
+    const [searchText, setSearchText] = useState('')
+    const searchParams = params.filter((item) => item.title.includes(searchText))
+
+
+    const headerSwitch = () => {
+        switch (headerMode) {
+            case 'default': {
+                return (
+                    <>
+                        <View style={modalStyle.header__arrow}>
+                            <Pressable
+                                onPress={() => setLngModal(false)}
+                            >
+                                <Ionicons name='arrow-back' style={{ fontSize: 22, color: '#fff' }} />
+                            </Pressable>
+                        </View>
+                        <View style={modalStyle.header__param}>
+                            <Text style={{ fontSize: 18 }}>
+                                {t("setting.modal.changeLanguage.title")}
+                            </Text>
+                        </View>
+                        <TouchableHighlight onPress={() => setHeaderMode('search')} style={modalStyle.header__button}>
+                            <Ionicons name='ios-search-outline' style={{ color: '#fff', fontSize: 22 }} />
+                        </TouchableHighlight>
+                    </>
+                )
+            } case 'search': {
+                return (
+                    <>
+                        <View style={modalStyle.header__arrow}>
+                            <Pressable
+                                onPress={() => {
+                                    setHeaderMode('default')
+                                    setSearchText('')
+                                }}
+                            >
+                                <Ionicons name='arrow-back' style={{ fontSize: 22, color: '#fff' }} />
+                            </Pressable>
+                        </View>
+                        <View style={{ justifyContent: 'center', flexGrow: 1, flexShrink: 1, flexBasis: 1 }}>
+                            <TextInput
+                                placeholder='Поиск'
+                                style={{ fontSize: 18 }}
+                                onChangeText={(e) => setSearchText(e)}
+                                value={searchText}
+                            />
+                        </View>
+                        <TouchableHighlight onPress={() => setSearchText('')} style={modalStyle.header__button}>
+                            <Ionicons name='close' style={{ color: '#fff', fontSize: 22 }} />
+                        </TouchableHighlight>
+                    </>
+                )
+            }
+        }
+    }
     return (
         <Modal
             transparent={true}
@@ -40,40 +98,65 @@ export const ModalLanguage = ({ lngModal, setLngModal }) => {
             <View style={modalStyle.container}>
 
                 <View style={modalStyle.header}>
-                    <View style={modalStyle.header__arrow}>
-                        <Pressable
-                            onPress={() => setLngModal(false)}
-                        >
-                            <Ionicons name='arrow-back' style={{ fontSize: 22, color: '#fff' }} />
-                        </Pressable>
-                    </View>
-                    <View style={modalStyle.header__param}>
-                        <Text style={{ fontSize: 18 }}>
-                            {t("setting.modal.changeLanguage.title")}
-                        </Text>
-                    </View>
-                    <TouchableHighlight onPress={() => { }} style={modalStyle.header__button}>
-                        <Ionicons name='ios-search-outline' style={{ color: '#fff', fontSize: 22 }} />
-                    </TouchableHighlight>
+                    {
+                        headerSwitch()
+                    }
                 </View>
-                <View>
-                    <View style={{ paddingHorizontal: 15, height: 40, justifyContent: "center" }}>
-                        <Text style={{ color: '#4169E1', fontSize: 17, fontWeight: '700' }}>
-                        {t("setting.modal.changeLanguage.title")}
-                        </Text>
-                    </View>
-                    <ScrollView>
+                <View style={{ flexGrow: 1 }}>
+
+                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                        <>
+                            {
+                                headerMode === 'default' &&
+                                <View style={{ paddingHorizontal: 15, height: 40, justifyContent: "center" }}>
+                                    <Text style={{ color: '#4169E1', fontSize: 17, fontWeight: '700' }}>
+                                        {t("setting.modal.changeLanguage.title")}
+                                    </Text>
+                                </View>
+                            }
+                            {
+                                headerMode === 'default' && params.map((item, index) => {
+                                    return (
+                                        <RenderLanguageItem
+                                            activeLanguage={activeLanguage}
+                                            changeLanguage={changeLanguage}
+                                            lastItem={index + 1 !== params.length}
+                                            language={item.language} title={item.title}
+                                            titleEn={item.titleEn} />
+                                    )
+                                })
+                            }
+                        </>
+
+                        <>
+                            {
+                                headerMode === 'search' && searchParams.length > 0 && <View style={{ paddingHorizontal: 15, height: 40, justifyContent: "center" }}>
+                                    <Text style={{ color: '#4169E1', fontSize: 17, fontWeight: '700' }}>
+                                        {t("setting.modal.changeLanguage.title")}
+                                    </Text>
+                                </View>
+                            }
+                            {
+                                headerMode === 'search' &&
+                                searchParams.map((item, index) => {
+                                    return (
+                                        <RenderLanguageItem
+                                            activeLanguage={activeLanguage}
+                                            changeLanguage={changeLanguage}
+                                            lastItem={index + 1 !== searchParams.length}
+                                            language={item.language} title={item.title}
+                                            titleEn={item.titleEn} />
+                                    )
+                                })
+                            }
+                        </>
                         {
-                            params.map((item, index) => {
-                                return (
-                                    <RenderLanguageItem
-                                        activeLanguage={activeLanguage}
-                                        changeLanguage={changeLanguage}
-                                        lastItem={index + 1 !== params.length}
-                                        language={item.language} title={item.title}
-                                        titleEn={item.titleEn} />
-                                )
-                            })
+                            searchParams.length === 0 &&
+                            <View style={{ flexGrow: 1, justifyContent: "center", alignItems: "center" }} >
+                                <Text style={{fontSize:20}}>
+                                    Нет результатов
+                                </Text>
+                            </View>
                         }
                     </ScrollView>
                 </View>
