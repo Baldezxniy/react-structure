@@ -12,26 +12,34 @@ import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../components/SearchInput';
 import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
-import {
-	Ionicons, MaterialIcons, AntDesign
-} from 'react-native-vector-icons'
+import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import DeleteChat from '../components/DeleteChat';
 import { useState } from 'react';
 import ChatHeaderContent from '../features/chatHeaderContent';
 import DeleteMessage from '../features/chatMessage/DeleteMessage';
+import { ContactaBackArrow } from '../components/ContactBackArrow';
+import { ContactHeaderTitle } from '../components/ContactHeaderTitle';
+import { ContentHeaderRightBtn } from '../components/ContentHeaderRightBtn';
+import { CntactHeaderInput } from '../components/CntactHeaderInput';
+import { ContactHeaderClear } from '../components/ContactHeaderClear';
 
 
 
 const Header = ({
-	showMenuAnimatedOn, headerMode, openMenuHeandler, closeSelect,
+	showMenuAnimatedOn, headerMode, setHeaderMode, openMenuHeandler, closeSelect,
 	selectArr, setSelectArr, input, setInput, messageArr, zeroingMessageArr,
-	userName, setUserName, userDeleteChat }) => {
+	userName, setUserName, userDeleteChat, setSortMode, searchValue, setSearchValue }) => {
 
 
 	const [chatDelete, setChatDelete] = useState(false)
 	const openDelete = () => { setChatDelete(true) }
 	const closeDelete = () => { setChatDelete(false) }
 	const clearSelect = () => { setSelectArr([]) }
+
+
+
+
+
 
 	switch (headerMode) {
 		case 'main': {
@@ -122,6 +130,22 @@ const Header = ({
 				<View style={stylesHeader.header}>
 					<SettingHeaderBackArrow />
 					<SettingHeaderButton openMenuHeandler={openMenuHeandler} />
+				</View>
+			)
+		} case "contact": {
+			return (
+				<View style={stylesHeader.header}>
+					<ContactaBackArrow headerMode={headerMode} />
+					<ContactHeaderTitle />
+					<ContentHeaderRightBtn setHeaderMode={setHeaderMode} setSortMode={setSortMode} />
+				</View>
+			)
+		} case 'search-contact-mode': {
+			return (
+				<View style={stylesHeader.header}>
+					<ContactaBackArrow headerMode={headerMode} setHeaderMode={setHeaderMode} />
+					<CntactHeaderInput searchValue={searchValue} setSearchValue={setSearchValue} />
+					{!!searchValue && <ContactHeaderClear setSearchValue={setSearchValue} />}
 				</View>
 			)
 		}

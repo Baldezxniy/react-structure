@@ -6,7 +6,7 @@ import { FooterStyle } from '../styles/FooterStyle'
 const Footer = () => {
     return (
 
-        <Link underlayColor="none" to='/add-message' style={FooterStyle.footer__link}>
+        <Link underlayColor="none" to='/contact' style={FooterStyle.footer__link}>
             <View >
                 <MaterialCommunityIcons name='pencil' style={{ color: '#fff', fontSize: 20 }} />
             </View>

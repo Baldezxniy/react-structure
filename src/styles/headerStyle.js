@@ -7,7 +7,7 @@ export const stylesHeader = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
         width: '100%',
-        backgroundColor:'#282045'
+        backgroundColor: '#282045'
     },
     header__left__buttom: {
         justifyContent: 'center',
@@ -20,6 +20,7 @@ export const stylesHeader = StyleSheet.create({
         flexDirection: 'row'
     },
     header__right__buttom: {
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -34,9 +35,10 @@ export const stylesHeader = StyleSheet.create({
         maxWidth: '82%'
 
     },
-    header__button:{ 
-        flexGrow: 1, 
-        justifyContent: 'flex-end', 
-        flexDirection: 'row' } 
+    header__button: {
+        flexGrow: 1,
+        justifyContent: 'flex-end',
+        flexDirection: 'row'
+    }
 
 });

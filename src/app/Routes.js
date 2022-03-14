@@ -2,7 +2,6 @@ import { NativeRouter, Routes, Route } from "react-router-native";
 
 import SettingPage from "../pages/setting/SettingPage.js";
 import AddContact from "../pages/addContact/AddContact.js";
-import AddMessage from "../pages/addMessage/AddMessage.js";
 import Main from "../pages/main/Main.js";
 import Chat from "../pages/chat/Chat.js";
 import Search from "../pages/search/Search.js";
@@ -14,6 +13,7 @@ import { useMyData } from "../apiHook/useMyData.js";
 import { useI18n } from "../apiHook/useI18n.js";
 import { useEffect } from "react";
 import { useTranslation } from 'react-i18next';
+import Contect from "../pages/contact/Contect.js";
 
 
 export const RoutesApp = (props) => {
@@ -46,7 +46,7 @@ export const RoutesApp = (props) => {
 							<Route path='/chat' element={<Chat />} />
 							<Route exact path="/" element={<Main />} />
 							<Route path='/profile/' element={<UserProfile />} />
-							<Route path='/add-message' element={<AddMessage />} />
+							<Route path='/contact' element={<Contect />} />
 							<Route path='/add-contact' element={<AddContact />} />
 							<Route path='/setting' element={<SettingPage />} />
 						</Routes>

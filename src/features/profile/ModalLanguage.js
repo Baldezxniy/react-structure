@@ -153,7 +153,7 @@ export const ModalLanguage = ({ lngModal, setLngModal }) => {
                         {
                             searchParams.length === 0 &&
                             <View style={{ flexGrow: 1, justifyContent: "center", alignItems: "center" }} >
-                                <Text style={{fontSize:20}}>
+                                <Text style={{ fontSize: 20 }}>
                                     Нет результатов
                                 </Text>
                             </View>

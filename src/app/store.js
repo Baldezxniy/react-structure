@@ -11,6 +11,7 @@ import chatMessageReducer from "../features/chatMessage/chatMessageSlice";
 import userProfileDataReducer from "../features/userProfileData/userProfileDataSlice";
 import userProfileListInfoReducer from "../features/userProfileInfo/userProfileListInfoSlice";
 import userProfileContentReducer from "../features/userProfileContent/userProfileContentSlice";
+import contactListSortReducer from "../features/contactListSort/contactListSortSlice";
 
 
 export const store = configureStore({
@@ -25,7 +26,8 @@ export const store = configureStore({
         chatMessage: chatMessageReducer,
         userProfileData: userProfileDataReducer,
         userProfileListInfo: userProfileListInfoReducer,
-        userProfileContent: userProfileContentReducer
+        userProfileContent: userProfileContentReducer,
+        contactListSort: contactListSortReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
