@@ -8,8 +8,16 @@ import ChatMessage from "./ChatMessage";
 import { getLoading, getMessage } from "./chatMessageSelector";
 import { getMessageTC } from "./chatMessageSlice";
 import { useTranslation } from 'react-i18next';
+import { chatStyles } from "../../styles/chatStyles";
+import { AntDesign } from 'react-native-vector-icons'
+import { TouchableHighlight } from "react-native";
 
-const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingMessageArr, setPintMessage }) => {
+
+
+
+
+
+const ChatMessageList = memo(({ setRedactMode, cleanAddCheckArr, setAddCheckArr, messageArr, setMessageArr, setChatMode, zeroingMessageArr, setPintMessage, chatMode }) => {
     const dispatch = useDispatch()
     const messages = useMessage()
     const { t } = useTranslation();
@@ -39,7 +47,7 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                                         {
                                             [...messageState].map((message) => {
 
-                                                return <ChatMessage t={t} check={message.check} setPintMessage={setPintMessage}
+                                                return <ChatMessage setRedactMode={setRedactMode} cleanAddCheckArr={cleanAddCheckArr} fullMessage={message} setAddCheckArr={setAddCheckArr} t={t} check={message.check} setPintMessage={setPintMessage}
                                                     messageId={message.messageId} pintMessage={message.pintMessage}
                                                     zeroingMessageArr={zeroingMessageArr} setChatMode={setChatMode}
                                                     messageArr={messageArr} setMessageArr={setMessageArr} key={message.messageId}
@@ -48,11 +56,16 @@ const ChatMessageList = memo(({ messageArr, setMessageArr, setChatMode, zeroingM
                                                 />
                                             })
                                         }
-                                    </ScrollView>}
+                                    </ScrollView>
+                                    }
+
+
+
+
                                     {
                                         messageState.length === 0 &&
                                         <View style={{ alignItems: "center" }}>
-                                            <Text style={{ fontSize: 20, backgroundColor: 'rgba(96, 101, 204, 0.6)', borderRadius:20, paddingHorizontal:15,paddingVertical:5 }}>
+                                            <Text style={{ fontSize: 20, backgroundColor: 'rgba(96, 101, 204, 0.6)', borderRadius: 20, paddingHorizontal: 15, paddingVertical: 5 }}>
                                                 {t("chat.startChat")}
                                             </Text>
                                         </View>

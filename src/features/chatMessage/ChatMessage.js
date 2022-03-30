@@ -7,7 +7,7 @@ import { Animated, PanResponder } from 'react-native'
 import { useRef } from 'react'
 
 
-const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
+const ChatMessage = ({ setRedactMode, cleanAddCheckArr, fullMessage, setAddCheckArr, t, userId, text, changed, time, messageArr, setChatMode,
     firstName, lastName, setMessageArr, messageId, zeroingMessageArr, pintMessage, check, setPintMessage }) => {
 
 
@@ -19,8 +19,6 @@ const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
 
     const messageCheck = messageArr.length > 0
     const backgroundColor = messageArr.includes(messageId)
-
-
 
     const messageSwip = useRef(new Animated.ValueXY()).current;
     const panResponder = PanResponder.create({
@@ -37,8 +35,11 @@ const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
         onPanResponderRelease: () => {
             if (messageSwip.x._value < -50) {
                 setPintMessage({ messageId, text, firstName, lastName })
+                setRedactMode(false)
             } else if (messageSwip.x._value > 30) {
+                setPintMessage(null)
                 setChatMode('chatMessageDelete')
+                setAddCheckArr(prev => [...prev, fullMessage]); // добавление отосланных либо редакта
                 setMessageArr(prev => [...prev, messageId])
             }
             Animated.spring(
@@ -53,7 +54,6 @@ const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
         },
     });
     let noSwip = messageArr.length === 0 ? panResponder.panHandlers : null
-
     return (
 
         <TouchableHighlight
@@ -61,27 +61,38 @@ const ChatMessage = ({t, userId, text, changed, time, messageArr, setChatMode,
             delayLongPress={400}
             onLongPress={() => {
                 if (messageArr.length === 0) {
-                    setMessageArr(prev => [...prev, messageId])
+                    setAddCheckArr(prev => [...prev, fullMessage]); // добавление отосланных либо редакта
+                    setMessageArr(prev => [...prev, messageId]); // доабвление массива отмеченных -- удаленных  
                 } else if (messageArr.length > 0 && !messageArr.includes(messageId)) {
-                    setMessageArr(prev => [...prev, messageId])
+                    setAddCheckArr(prev => [...prev, fullMessage]); // добавление отосланных либо редакта
+                    setMessageArr(prev => [...prev, messageId]);
                 } else if (messageArr.length === 1 && messageArr.includes(messageId)) {
-                    zeroingMessageArr()
+                    zeroingMessageArr();
+                    cleanAddCheckArr();
                 } else if (messageArr.length > 0 && messageArr.includes(messageId)) {
+                    setAddCheckArr(prev => {
+                        return prev.filter(message => message.messageId !== fullMessage.messageId)
+                    }); // добавление отосланных либо редакта
                     setMessageArr(prev => {
                         return prev.filter(message => message !== messageId)
-                    })
+                    });
                 }
             }}
             onPress={(e) => {
                 if (messageCheck) {
                     if (messageArr.length > 0 && !messageArr.includes(messageId)) {
-                        setMessageArr(prev => [...prev, messageId])
+                        setAddCheckArr(prev => [...prev, fullMessage]); // добавление отосланных либо редакта
+                        setMessageArr(prev => [...prev, messageId]);
                     } else if (messageArr.length === 1 && messageArr.includes(messageId)) {
-                        zeroingMessageArr()
+                        zeroingMessageArr();
+                        cleanAddCheckArr();
                     } else if (messageArr.length > 0 && messageArr.includes(messageId)) {
+                        setAddCheckArr(prev => {
+                            return prev.filter(message => message.messageId !== fullMessage.messageId)
+                        }); // добавление отосланных либо редакта
                         setMessageArr(prev => {
                             return prev.filter(message => message !== messageId)
-                        })
+                        });
                     }
                 }
             }}

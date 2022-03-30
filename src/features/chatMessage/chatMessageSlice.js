@@ -19,12 +19,18 @@ const chatMessageSlice = createSlice({
         },
         addMessage: (state, action) => {
             state.messages = [...state.messages, action.payload.message]
+        },
+        redactMessage: (state, action) => {
+            state.messages = [...state.messages].reduce((acc, message) => {
+                if (message.messageId === action.payload.messageId) return [...acc, { ...message, text: action.payload.text, changed: true, }]
+                return [...acc, message]
+            }, [])
         }
     }
 })
 
 
-const { getMessage, setLoading, deleteMessage, addMessage } = chatMessageSlice.actions
+const { getMessage, setLoading, deleteMessage, addMessage, redactMessage } = chatMessageSlice.actions
 
 export const getMessageTC = (payload) => dispatch => {
     dispatch(getMessage({ messages: payload }))
@@ -36,7 +42,7 @@ export const deleteMessageTC = payload => dispatch => {
 }
 
 export const addMessageTC = payload => (dispatch, getState) => {
-    
+
     const message = {
         userId: 1, messageId: getState().chatMessage.messages.length + 2,
         text: payload.text, changed: false,
@@ -54,6 +60,12 @@ export const addMessageTC = payload => (dispatch, getState) => {
         }
     }
     dispatch(addMessage({ message: message }))
+}
+
+
+export const redactMessageTC = payload => dispatch => {
+    
+    dispatch(redactMessage(payload))
 }
 
 

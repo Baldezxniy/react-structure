@@ -12,7 +12,7 @@ import UserProfileHeaderButtom from '../components/UserProfileHeaderButtom';
 import SearchInput from '../components/SearchInput';
 import { stylesHeader } from '../styles/headerStyle';
 import UserProfileHeaderBackArrow from './../components/UserProfileHeaderBackArrow'
-import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
+import { Ionicons, MaterialIcons, Octicons } from 'react-native-vector-icons'
 import DeleteChat from '../components/DeleteChat';
 import { useState } from 'react';
 import ChatHeaderContent from '../features/chatHeaderContent';
@@ -25,10 +25,10 @@ import { ContactHeaderClear } from '../components/ContactHeaderClear';
 
 
 
-const Header = ({
+const Header = ({ addCheckArr,
 	showMenuAnimatedOn, headerMode, setHeaderMode, openMenuHeandler, closeSelect,
 	selectArr, setSelectArr, input, setInput, messageArr, zeroingMessageArr,
-	userName, setUserName, userDeleteChat, setSortMode, searchValue, setSearchValue }) => {
+	userName, setUserName, userDeleteChat, setSortMode, searchValue, setSearchValue, showRedactMode }) => {
 
 
 	const [chatDelete, setChatDelete] = useState(false)
@@ -37,8 +37,7 @@ const Header = ({
 	const clearSelect = () => { setSelectArr([]) }
 
 
-
-
+	const myId = 1
 
 
 	switch (headerMode) {
@@ -107,6 +106,12 @@ const Header = ({
 						</View>
 					</View>
 					<View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', flexGrow: 1 }}>
+						{
+							myId === addCheckArr[0].userId && messageArr.length === 1 &&
+							<TouchableHighlight onPress={() => showRedactMode()} style={{ marginRight: 30 }}>
+								<Octicons name='pencil' style={{ color: '#000', fontSize: 22 }} />
+							</TouchableHighlight>
+						}
 						<View style={{ marginRight: 30 }}>
 							<MaterialIcons name='content-copy' style={{ color: '#fff', fontSize: 22 }} />
 						</View>

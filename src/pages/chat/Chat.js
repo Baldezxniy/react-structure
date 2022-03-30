@@ -15,16 +15,36 @@ const Chat = memo(({ }) => {
 		setChatMode('chat')
 		setMessageArr([])
 	}
+
+	const [redactMode, setRedactMode] = useState(false)
+
+	const showRedactMode = () => {
+		setRedactMode(true)
+		zeroingMessageArr()
+	}
+
 	const [pintMessage, setPintMessage] = useState(null)
 	const [userName, setUserName] = useState({})
+
+
+
+
+	const [addCheckArr, setAddCheckArr] = useState([])
+	const cleanAddCheckArr = () => {
+		setAddCheckArr([])
+	}
+
+
+
+
 	return (
 		<View style={{ flex: 1 }}>
-			<Header messageArr={messageArr} userName={userName} headerMode={chatMode} setUserName={setUserName} messageArr={messageArr} zeroingMessageArr={zeroingMessageArr} />
+			<Header addCheckArr={addCheckArr} messageArr={messageArr} showRedactMode={showRedactMode} userName={userName} headerMode={chatMode} setUserName={setUserName} messageArr={messageArr} zeroingMessageArr={zeroingMessageArr} />
 			{isFloating &&
 				<Music />
 			}
-			<ChatMessageList setPintMessage={setPintMessage} messageArr={messageArr} setMessageArr={setMessageArr} setChatMode={setChatMode} zeroingMessageArr={zeroingMessageArr} />
-			<FormChatInput pintMessage={pintMessage} setPintMessage={setPintMessage} />
+			<ChatMessageList setRedactMode={setRedactMode} cleanAddCheckArr={cleanAddCheckArr} setAddCheckArr={setAddCheckArr} chatMode={chatMode} setPintMessage={setPintMessage} messageArr={messageArr} setMessageArr={setMessageArr} setChatMode={setChatMode} zeroingMessageArr={zeroingMessageArr} />
+			<FormChatInput showRedactMode={showRedactMode}  cleanAddCheckArr={cleanAddCheckArr} addCheckArr={addCheckArr} chatMode={chatMode} messageArr={messageArr} setRedactMode={setRedactMode} redactMode={redactMode} pintMessage={pintMessage} setPintMessage={setPintMessage} />
 		</View>
 	)
 })

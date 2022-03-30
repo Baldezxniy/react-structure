@@ -21,7 +21,7 @@ const ChatListItem = memo(({ avatar, firstName, lastName, online, message,
         <>
             <TouchableHighlight
                 onPress={() => {
-                    debugger
+                    
                     if (select) {
 
                         if (!selectArr.includes(chatId)) {
